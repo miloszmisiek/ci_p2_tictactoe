@@ -22,3 +22,6 @@ You can start the game *here*.
 ### Smartphone View
 ![Smartphone View](/assets/images/smartphone.webp)
 
+# Credits
+## Content
+- Colours visual representation come from [Scheme Color](https://www.schemecolor.com/flat-gray-ui-color-palette.php).

@@ -1,6 +1,50 @@
+/* Large portion of code is adopted from YouTube Tutorial by James Q Quick https://www.youtube.com/watch?v=E621N5GBKv8 */
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Patrick+Hand&display=swap');
+
+:root {
+    --gray: #636e72; /* using css variables for repetive use of same color with calling name instead of hex value*/
+}
 
 * {
     margin: 0;
     padding: 0;
     border: none;
+    box-sizing: border-box; /* width and heigth for elements will include border and padding */
+}
+
+body {
+    color: var(--gray);
+    font-family: 'Patrick Hand', sans-serif;
+}
+
+h1 {
+    font-family: 'Cabin Sketch', sans-serif;
+    font-size: 54px;
+}
+
+.container {
+    padding: 40px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+#board {
+    width: 450px;
+    display: flex;
+    flex-wrap: wrap; /* if elements in a row reaches 450px it will transfer on the bottom  */
+    margin-top: 40px;
+}
+
+.field {
+    height: 150px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gray);
+    border: 1px solid red;
 }
