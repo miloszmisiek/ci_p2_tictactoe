@@ -22,9 +22,19 @@ h1 {
     font-size: 54px;
 }
 
+#help-button {
+    color: var(--gray);
+    font-family: 'Patrick Hand', sans-serif;
+    margin-top: 25vh;
+    margin-left: 60vw;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 40px;
+}
+
 .container {
-    padding: 40px;
-    height: 100vh;
+    padding: 0 40px 40px 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,4 +57,17 @@ h1 {
     align-items: center;
     color: var(--gray);
     /* border: 1px solid red; */
+}
+
+#button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#button-wrapper button {
+    margin: 30px 40px 0;
+    color: var(--gray);
+    font-family: 'Patrick Hand', sans-serif;
+    font-size: 25px;
 }
