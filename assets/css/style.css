@@ -2,19 +2,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Patrick+Hand&display=swap');
 
 :root {
-    --gray: #636e72; /* using css variables for repetive use of same color with calling name instead of hex value*/
+    --gray: #636e72;
+    /* using css variables for repetive use of same color with calling name instead of hex value*/
 }
 
 * {
     margin: 0;
     padding: 0;
     border: none;
-    box-sizing: border-box; /* width and heigth for elements will include border and padding */
+    box-sizing: border-box;
+    /* width and heigth for elements will include border and padding */
 }
 
 body {
     color: var(--gray);
     font-family: 'Patrick Hand', sans-serif;
+}
+
+#heading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25vh;
 }
 
 h1 {
@@ -25,8 +34,8 @@ h1 {
 #help-button {
     color: var(--gray);
     font-family: 'Patrick Hand', sans-serif;
-    margin-top: 25vh;
-    margin-left: 60vw;
+    /* margin-top: 25vh;
+    margin-left: 60vw; */
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -38,14 +47,17 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* elements on top of each other */
+    flex-direction: column;
+    /* elements on top of each other */
 
 }
 
 #board {
     width: 450px;
-    display: flex; /* default flex stacking direction is in a row */
-    flex-wrap: wrap; /* if elements in a row reaches 450px it will transfer on the bottom  */
+    display: flex;
+    /* default flex stacking direction is in a row */
+    flex-wrap: wrap;
+    /* if elements in a row reaches 450px it will transfer on the bottom  */
     margin-top: 40px;
 }
 
