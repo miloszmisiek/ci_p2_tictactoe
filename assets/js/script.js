@@ -26,3 +26,24 @@ document.addEventListener("DOMContentLoaded", function () {
 function fieldClicked(event) {
     console.log("clicked");
 }
+
+
+document.getElementById("start-button").addEventListener("click", function () {
+    let timeLeft = 30;
+    let elem = document.getElementById('demo');
+    let timerId = setInterval(countdown, 1000);
+    let suffix = ":";
+
+    function countdown() {
+        if (timeLeft == -1) {
+            clearTimeout(timerId);
+            alert("Timeout");
+        } else {
+            if (timeLeft < 10) {
+                suffix = ":0";
+            };
+            elem.innerHTML = "00" + suffix + timeLeft + ' sec';
+            timeLeft--;
+        }
+    }
+});

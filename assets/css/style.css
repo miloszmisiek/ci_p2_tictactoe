@@ -23,12 +23,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 25vh;
+    margin-top: 20vh;
+    /* border: 1px solid blue; */
 }
 
 h1 {
     font-family: 'Cabin Sketch', sans-serif;
     font-size: 54px;
+    margin-left: 50px;
+    padding-top: 30px;
+}
+
+#heading-wrapper button {
+    margin-bottom: 70px;
+    margin-left: 15px;
+    /* border: 1px solid red; */
 }
 
 #help-button {
@@ -42,8 +51,18 @@ h1 {
     font-size: 40px;
 }
 
+.player-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-info p {
+    font-size: 30px;
+}
+
 .container {
-    padding: 0 40px 40px 40px;
+    margin: 30px 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,7 +77,6 @@ h1 {
     /* default flex stacking direction is in a row */
     flex-wrap: wrap;
     /* if elements in a row reaches 450px it will transfer on the bottom  */
-    margin-top: 40px;
 }
 
 .field {
@@ -82,4 +100,6 @@ h1 {
     color: var(--gray);
     font-family: 'Patrick Hand', sans-serif;
     font-size: 25px;
+    padding: 10px 30px;
+    border-radius: 18%;
 }
