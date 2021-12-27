@@ -19,11 +19,23 @@ body {
     font-family: 'Patrick Hand', sans-serif;
 }
 
+#total-wrapper {
+    height: 100vh;
+    border: 1px solid red;
+    
+    /* below to consider for aliging center all the elements --> some work on margins/paddings other elements needed */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+}
+
 #heading-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20vh;
+    height: 12vh;
+    /* margin-top: 20px; */
     /* border: 1px solid blue; */
 }
 
@@ -35,20 +47,18 @@ h1 {
 }
 
 #heading-wrapper button {
-    margin-bottom: 70px;
-    margin-left: 15px;
+    margin-bottom: 45px;
+    margin-left: 10px;
     /* border: 1px solid red; */
 }
 
 #help-button {
     color: var(--gray);
     font-family: 'Patrick Hand', sans-serif;
-    /* margin-top: 25vh;
-    margin-left: 60vw; */
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
-    font-size: 40px;
+    font-size: 25px;
 }
 
 .player-info {
@@ -61,7 +71,7 @@ h1 {
     font-size: 30px;
 }
 
-.container {
+.board-container {
     margin: 30px 40px;
     display: flex;
     justify-content: center;
@@ -102,4 +112,35 @@ h1 {
     font-size: 25px;
     padding: 10px 30px;
     border-radius: 18%;
+}
+
+@media screen and (max-width: 480px) {
+    
+    h1 {
+        font-size: 40px;
+    }
+
+    #heading-wrapper button {
+        margin-bottom: 25px;
+    }
+
+    .player-info p {
+        font-size: 25px;
+    }
+
+    #board {
+        width: 300px;
+    }
+
+    .field {
+        height: 100px;
+        width: 100px;
+    }
+
+    #button-wrapper button {
+        margin: 10px 25px 0;
+        font-size: 20px;
+    }
+
+
 }
