@@ -120,6 +120,23 @@ h1 {
     border-radius: 18%;
 }
 
+/* All 'score' elements copied and modified from Code Institute 'Love Maths' project */
+.score-area {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scores {
+    padding: 25px;
+}
+
+#score {
+    color: green;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 480px) {
     
     h1 {
