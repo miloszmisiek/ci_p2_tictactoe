@@ -71,6 +71,12 @@ h1 {
     font-size: 30px;
 }
 
+#game-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .board-container {
     margin: 30px 40px;
     display: flex;

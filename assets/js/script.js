@@ -30,7 +30,7 @@ function fieldClicked(event) {
 
 document.getElementById("start-button").addEventListener("click", function () {
     let timeLeft = 30;
-    let elem = document.getElementById('demo');
+    let elem = document.getElementById('timer');
     let timerId = setInterval(countdown, 1000);
     let suffix = ":";
 
