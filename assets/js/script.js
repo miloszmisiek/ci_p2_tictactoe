@@ -23,13 +23,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+/** Function returns random player (X or O) */
+function playerSelect() {
+    let players = ["X", "O"]
+    let randomPlayer = Math.floor(Math.random() * players.length);
+    
+    return players[randomPlayer];
+};
+
 function fieldClicked(event) {
     console.log("clicked");
 }
 
-
+/** Funtion with event listener to start timer when user clicks START button */
 document.getElementById("start-button").addEventListener("click", function () {
-    let timeLeft = 30;
+    let timeLeft = 29;
     let elem = document.getElementById('timer');
     let timerId = setInterval(countdown, 1000);
     let suffix = ":";

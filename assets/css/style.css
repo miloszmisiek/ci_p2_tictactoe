@@ -22,7 +22,7 @@ body {
 #total-wrapper {
     height: 100vh;
     border: 1px solid red;
-    
+
     /* below to consider for aliging center all the elements --> some work on margins/paddings other elements needed */
     /* display: flex;
     justify-content: center;
@@ -30,6 +30,7 @@ body {
     flex-direction: column; */
 }
 
+/* HEADING */
 #heading-wrapper {
     display: flex;
     justify-content: center;
@@ -46,13 +47,9 @@ h1 {
     padding-top: 30px;
 }
 
-#heading-wrapper button {
+#help-button {
     margin-bottom: 45px;
     margin-left: 10px;
-    /* border: 1px solid red; */
-}
-
-#help-button {
     color: var(--gray);
     font-family: 'Patrick Hand', sans-serif;
     width: 35px;
@@ -61,6 +58,7 @@ h1 {
     font-size: 25px;
 }
 
+/* PLAYER INFORMATION */
 .player-info {
     display: flex;
     justify-content: center;
@@ -71,16 +69,27 @@ h1 {
     font-size: 30px;
 }
 
+
+/* GAME CONTROLS SECTION */
 #game-controls {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 24px;
 }
 
 .game-control {
     margin: 0 10px;
+    font-size: 24px;
+    color: var(--gray);
 }
 
+#volume {
+    padding: 10px;
+    background: none;
+}
+
+/* GAMEBOARD SECTION */
 .board-container {
     margin: 30px 40px;
     display: flex;
@@ -109,6 +118,7 @@ h1 {
     /* border: 1px solid red; */
 }
 
+/* START/RESET BUTTONS */
 #button-wrapper {
     display: flex;
     justify-content: center;
@@ -124,6 +134,7 @@ h1 {
     border-radius: 18%;
 }
 
+/* SCORES AREA */
 /* All 'score' elements copied and modified from Code Institute 'Love Maths' project */
 .score-area {
     font-size: 1.2rem;
@@ -147,8 +158,9 @@ h1 {
     font-weight: bold;
 }
 
+/* RESPONSIVNESS */
 @media screen and (max-width: 480px) {
-    
+
     h1 {
         font-size: 40px;
     }
