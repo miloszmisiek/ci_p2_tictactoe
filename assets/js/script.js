@@ -3,8 +3,6 @@
  */
 document.addEventListener("DOMContentLoaded", function () {
 
-    let fields = document.getElementsByClassName("field");
-
     for (let i = 0; i < fields.length; i++) {
 
         if (i < 3) {
@@ -23,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+let fields = document.getElementsByClassName("field");
 let start = document.getElementById("start-button");
 let reset = document.getElementById("rest-button");
 
@@ -43,6 +42,10 @@ let winningConditions = [
     [2, 4, 6]
 ];
 
+let spaces = [null, null, null, null, null, null, null, null, null];
+
+let player = randomPlayerSelection();
+
 /** Function returns random player (X or O) */
 function randomPlayerSelection() {
     let players = ["X", "O"]
@@ -52,25 +55,30 @@ function randomPlayerSelection() {
 };
 
 function fieldClicked(event) {
-    console.log("clicked");
-}
+    if (gameOn) {
+        let id = event.target.id;
+        console.log(id);
+
+        if (!spaces[id]) {
+            spaces[id] = player;
+            event.target.innerText = player;
+        }
+    }
+};
 
 document.getElementById("start-button").addEventListener("click", setTimer);
 
 /** Funtion to start timer when user clicks START button */
 function setTimer(event) {
-    
+
     gameOn = true;
 
     document.getElementById("start-button").removeEventListener("click", setTimer);
 
-    let timeLeft = 29;
+    let timeLeft = 5;
     let elem = document.getElementById('timer');
     let timerId = setInterval(countdown, 1000);
     let suffix = ":";
-
-    let player = randomPlayerSelection();
-    console.log(player);
 
     function countdown() {
         if (timeLeft == -1) {
@@ -78,6 +86,12 @@ function setTimer(event) {
             alert("Timeout");
             gameOn = false;
             document.getElementById("start-button").addEventListener("click", setTimer);
+            for (let i = 0; i < spaces.length; i++) {
+                spaces[i] = null;
+            };
+            for (let field of fields) {
+                field.innerHTML = null;
+            };
         } else {
             if (timeLeft < 10) {
                 suffix = ":0";
@@ -87,4 +101,5 @@ function setTimer(event) {
         }
     }
     document.getElementById("player-turn").innerHTML = `Player ${player} turn`;
+    return player;
 };
