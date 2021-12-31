@@ -24,6 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
 let fields = document.getElementsByClassName("field");
 let start = document.getElementById("start-button");
 let reset = document.getElementById("reset-button");
+let mainTheme = document.getElementById("main-theme");
+let volume = document.getElementById("volume");
+
+let musicMute = true;
+let spaces = [null, null, null, null, null, null, null, null, null];
+let player = randomPlayerSelection();
 
 let gameOn = false;
 
@@ -42,9 +48,36 @@ let winningConditions = [
     [2, 4, 6]
 ];
 
-let spaces = [null, null, null, null, null, null, null, null, null];
+start.addEventListener("click", setTimer);
 
-let player = randomPlayerSelection();
+volume.addEventListener("click", (e) => {
+    if (!musicMute) {
+        mainThemePause();
+    } else {
+        mainThemePlay();
+    }
+})
+
+function mainThemePlay() {
+    musicMute = false;
+    mainTheme.play();
+    volume.innerHTML = '<i class="fas fa-volume-up"></i>';
+};
+
+function mainThemePause() {
+    musicMute = true;
+    mainTheme.pause();
+    volume.innerHTML = '<i class="fas fa-volume-mute"></i>';
+}
+
+function playerWon() {
+    if (spaces[0] === player) {
+        if (spaces[1] === player && spaces[2] === player) {
+            console.log(`${player} has won! Congratulations!`)
+            return true;
+        }
+    }
+}
 
 /** Function returns random player (X or O) */
 function randomPlayerSelection() {
@@ -67,17 +100,15 @@ function fieldClicked(event) {
     }
 };
 
-
-
-start.addEventListener("click", setTimer);
-
 /** Funtion to start timer when user clicks START button */
 function setTimer(event) {
 
     gameOn = true;
-
+    
+    mainThemePlay();
     start.removeEventListener("click", setTimer);
     document.getElementById("player-turn").innerHTML = `Player ${player} turn`;
+
 
     reset.addEventListener("click", (e) => {
         timeLeft = -1;
@@ -102,6 +133,10 @@ function setTimer(event) {
                 field.innerHTML = null;
             };
             document.getElementById("timer").innerHTML = "00:30 sec"
+            mainThemePause();
+            mainTheme.currentTime = 0;
+            volume.innerHTML = '<i class="fas fa-volume-up"></i>';
+
         } else {
             if (timeLeft < 10) {
                 suffix = ":0";

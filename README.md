@@ -25,3 +25,9 @@ You can start the game *here*.
 # Credits
 ## Content
 - Colours visual representation come from [Scheme Color](https://www.schemecolor.com/flat-gray-ui-color-palette.php).
+- Sound effects come from:
+  - Main game theme:  
+    - [Epic Song by BoxCat Games](https://freemusicarchive.org/music/BoxCat_Games)
+    - [Music promoted by](https://www.chosic.com/free-music/all/)
+    - [Creative Commons CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+  - Sound effects: [mixkit.co](https://mixkit.co/free-stock-music/)
