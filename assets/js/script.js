@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let fields = document.getElementsByClassName("field");
 let start = document.getElementById("start-button");
-let reset = document.getElementById("rest-button");
+let reset = document.getElementById("reset-button");
 
 let gameOn = false;
 
@@ -54,6 +54,7 @@ function randomPlayerSelection() {
     return players[randomPlayer];
 };
 
+/** Function tracks players move across the board */
 function fieldClicked(event) {
     if (gameOn) {
         let id = event.target.id;
@@ -66,24 +67,32 @@ function fieldClicked(event) {
     }
 };
 
-document.getElementById("start-button").addEventListener("click", setTimer);
+
+
+start.addEventListener("click", setTimer);
 
 /** Funtion to start timer when user clicks START button */
 function setTimer(event) {
 
     gameOn = true;
 
-    document.getElementById("start-button").removeEventListener("click", setTimer);
+    start.removeEventListener("click", setTimer);
+    document.getElementById("player-turn").innerHTML = `Player ${player} turn`;
 
-    let timeLeft = 5;
+    reset.addEventListener("click", (e) => {
+        timeLeft = -1;
+    });
+
+    let timeLeft = 10;
     let elem = document.getElementById('timer');
     let timerId = setInterval(countdown, 1000);
     let suffix = ":";
 
+    /** Function starts countdown and executes different code for specific remaining times */
     function countdown() {
         if (timeLeft == -1) {
             clearTimeout(timerId);
-            alert("Timeout");
+            alert("End of game");
             gameOn = false;
             document.getElementById("start-button").addEventListener("click", setTimer);
             for (let i = 0; i < spaces.length; i++) {
@@ -92,6 +101,7 @@ function setTimer(event) {
             for (let field of fields) {
                 field.innerHTML = null;
             };
+            document.getElementById("timer").innerHTML = "00:30 sec"
         } else {
             if (timeLeft < 10) {
                 suffix = ":0";
@@ -100,6 +110,4 @@ function setTimer(event) {
             timeLeft--;
         }
     }
-    document.getElementById("player-turn").innerHTML = `Player ${player} turn`;
-    return player;
 };
