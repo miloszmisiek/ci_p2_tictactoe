@@ -70,13 +70,45 @@ function mainThemePause() {
     volume.innerHTML = '<i class="fas fa-volume-mute"></i>';
 }
 
+/** Function to check winning conditions */
 function playerWon() {
+    // top right corner, win top horizontal, vertical and across
     if (spaces[0] === player) {
         if (spaces[1] === player && spaces[2] === player) {
             console.log(`${player} has won! Congratulations!`)
             return true;
+        } else if (spaces[3] === player && spaces[6] === player) {
+            console.log(`${player} has won! Congratulations!`)
+            return true;
+        } else if (spaces[4] === player && spaces[8] === player) {
+            console.log(`${player} has won! Congratulations!`)
+            return true;
         }
-    }
+    };
+    // bottom right corner, win bottom-top, bottom-left
+    if (spaces[8] === player) {
+        if (spaces[2] === player && spaces[5] === player) {
+            console.log(`${player} has won! Congratulations!`)
+            return true;
+        } else if (spaces[6] === player && spaces[7] === player) {
+            console.log(`${player} has won! Congratulations!`)
+            return true;
+        }
+    };
+    // middle position, win top-bottom, vertical and across right-left
+    if (spaces[4] === player) {
+        if (spaces[1] === player && spaces[7] === player) {
+            console.log(`${player} has won! Congratulations!`)
+            return true;
+        } else if (spaces[3] === player && spaces[5] === player) {
+            console.log(`${player} has won! Congratulations!`)
+            return true;
+        } else if (spaces[2] === player && spaces[6] === player) {
+            console.log(`${player} has won! Congratulations!`)
+            return true;
+        }
+    };
+
 }
 
 /** Function returns random player (X or O) */
@@ -104,7 +136,7 @@ function fieldClicked(event) {
 function setTimer(event) {
 
     gameOn = true;
-    
+
     mainThemePlay();
     start.removeEventListener("click", setTimer);
     document.getElementById("player-turn").innerHTML = `Player ${player} turn`;
