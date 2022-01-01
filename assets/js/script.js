@@ -121,7 +121,10 @@ function randomPlayerSelection() {
 
 /** Function tracks players move across the board */
 function fieldClicked(event) {
-    if (gameOn) {
+
+    let win = playerWon();
+
+    if (gameOn && !win) {
         let id = event.target.id;
         console.log(id);
 
@@ -129,8 +132,43 @@ function fieldClicked(event) {
             spaces[id] = player;
             event.target.innerText = player;
         }
+    } else {
+        timeLeft = -1
     }
 };
+
+let timeLeft = 15;
+let elem = document.getElementById('timer');
+let timerId = setInterval(countdown, 1000);
+let suffix = ":";
+
+function countdown() {
+    if (timeLeft == -1) {
+        clearTimeout(timerId);
+        alert("End of game");
+        gameOn = false;
+        document.getElementById("start-button").addEventListener("click", setTimer);
+        for (let i = 0; i < spaces.length; i++) {
+            spaces[i] = null;
+        };
+        for (let field of fields) {
+            field.innerHTML = null;
+        };
+        document.getElementById("timer").innerHTML = "00:30 sec"
+        mainThemePause();
+        mainTheme.currentTime = 0;
+        volume.innerHTML = '<i class="fas fa-volume-up"></i>';
+
+    } else {
+        if (timeLeft < 10) {
+            suffix = ":0";
+        };
+        elem.innerHTML = "00" + suffix + timeLeft + ' sec';
+        timeLeft--;
+    }
+}
+
+
 
 /** Funtion to start timer when user clicks START button */
 function setTimer(event) {
@@ -146,35 +184,6 @@ function setTimer(event) {
         timeLeft = -1;
     });
 
-    let timeLeft = 10;
-    let elem = document.getElementById('timer');
-    let timerId = setInterval(countdown, 1000);
-    let suffix = ":";
-
     /** Function starts countdown and executes different code for specific remaining times */
-    function countdown() {
-        if (timeLeft == -1) {
-            clearTimeout(timerId);
-            alert("End of game");
-            gameOn = false;
-            document.getElementById("start-button").addEventListener("click", setTimer);
-            for (let i = 0; i < spaces.length; i++) {
-                spaces[i] = null;
-            };
-            for (let field of fields) {
-                field.innerHTML = null;
-            };
-            document.getElementById("timer").innerHTML = "00:30 sec"
-            mainThemePause();
-            mainTheme.currentTime = 0;
-            volume.innerHTML = '<i class="fas fa-volume-up"></i>';
-
-        } else {
-            if (timeLeft < 10) {
-                suffix = ":0";
-            };
-            elem.innerHTML = "00" + suffix + timeLeft + ' sec';
-            timeLeft--;
-        }
-    }
+    countdown();
 };
