@@ -29,13 +29,13 @@ let volume = document.getElementById("volume");
 
 let musicMute = true;
 let spaces = [null, null, null, null, null, null, null, null, null];
-let player = randomPlayerSelection();
+let player;
+// let win = playerWon(player);
+let timeLeft;
 
 let gameOn = false;
 
-let xWin = "Player X won!";
-let oWin = "Player O won!";
-let tie = "It's a TIE!";
+
 
 let winningConditions = [
     [0, 1, 2],
@@ -121,59 +121,29 @@ function randomPlayerSelection() {
 
 /** Function tracks players move across the board */
 function fieldClicked(event) {
+    let id = event.target.id;
+    console.log(id);
 
-    let win = playerWon();
-
-    if (gameOn && !win) {
-        let id = event.target.id;
-        console.log(id);
-
-        if (!spaces[id]) {
-            spaces[id] = player;
-            event.target.innerText = player;
+    if (!spaces[id]) {
+        spaces[id] = player;
+        event.target.innerText = player;
+        if (playerWon()) {
+            timeLeft = -1;
         }
-    } else {
-        timeLeft = -1
     }
+
 };
-
-let timeLeft = 15;
-let elem = document.getElementById('timer');
-let timerId = setInterval(countdown, 1000);
-let suffix = ":";
-
-function countdown() {
-    if (timeLeft == -1) {
-        clearTimeout(timerId);
-        alert("End of game");
-        gameOn = false;
-        document.getElementById("start-button").addEventListener("click", setTimer);
-        for (let i = 0; i < spaces.length; i++) {
-            spaces[i] = null;
-        };
-        for (let field of fields) {
-            field.innerHTML = null;
-        };
-        document.getElementById("timer").innerHTML = "00:30 sec"
-        mainThemePause();
-        mainTheme.currentTime = 0;
-        volume.innerHTML = '<i class="fas fa-volume-up"></i>';
-
-    } else {
-        if (timeLeft < 10) {
-            suffix = ":0";
-        };
-        elem.innerHTML = "00" + suffix + timeLeft + ' sec';
-        timeLeft--;
-    }
-}
-
-
 
 /** Funtion to start timer when user clicks START button */
 function setTimer(event) {
 
     gameOn = true;
+    player = randomPlayerSelection();
+
+    timeLeft = 15;
+    let elem = document.getElementById('timer');
+    let timerId = setInterval(countdown, 1000);
+    let suffix = ":";
 
     mainThemePlay();
     start.removeEventListener("click", setTimer);
@@ -185,5 +155,32 @@ function setTimer(event) {
     });
 
     /** Function starts countdown and executes different code for specific remaining times */
-    countdown();
+    function countdown() {
+
+        if (timeLeft == -1) {
+            timeLeft = 15;
+            clearTimeout(timerId);
+            alert("End of game");
+            gameOn = false;
+            document.getElementById("start-button").addEventListener("click", setTimer);
+            for (let i = 0; i < spaces.length; i++) {
+                spaces[i] = null;
+            };
+            for (let field of fields) {
+                field.innerHTML = null;
+            };
+            document.getElementById("timer").innerHTML = "00:" + timeLeft + " sec";
+            mainThemePause();
+            mainTheme.currentTime = 0;
+            volume.innerHTML = '<i class="fas fa-volume-up"></i>';
+            document.getElementById("player-turn").innerHTML = "";
+
+        } else {
+            if (timeLeft < 10) {
+                suffix = ":0";
+            };
+            elem.innerHTML = "00" + suffix + timeLeft + ' sec';
+            timeLeft--;
+        }
+    }
 };
