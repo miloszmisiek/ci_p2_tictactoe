@@ -3,6 +3,7 @@ let cells = [null, null, null, null, null, null, null, null, null];
 let players = ["X", "O"]
 let player;
 let timeLeft;
+let emptyCells;
 let gameOn = false;
 
 // Elements
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fields[i].style.borderLeft = "1px solid var(--gray)";
         };
         fields[i].addEventListener("click", fieldClicked);
-        
+
     }
 });
 
@@ -71,48 +72,70 @@ function playerWon() {
     // top right corner, win top horizontal, vertical and across
     if (cells[0] === player) {
         if (cells[1] === cells[0] && cells[2] === cells[0]) {
-            console.log(`${player} has won! Congratulations!`)
+            console.log(`${player} wins top diagonal`)
             endGameCondition.innerHTML = `Player ${player} has won!`
+            gameOn = false;
             return true;
         } else if (cells[3] === cells[0] && cells[6] === cells[0]) {
-            console.log(`${player} has won! Congratulations!`)
+            console.log(`${player} wins top to bottom - left`)
             endGameCondition.innerHTML = `Player ${player} has won!`
+            gameOn = false;
             return true;
         } else if (cells[4] === cells[0] && cells[8] === cells[0]) {
-            console.log(`${player} has won! Congratulations!`)
+            console.log(`${player} wins top-left across`)
             endGameCondition.innerHTML = `Player ${player} has won!`
+            gameOn = false;
             return true;
         }
     };
     // bottom right corner, win bottom-top, bottom-left
     if (cells[8] === player) {
         if (cells[2] === cells[8] && cells[5] === cells[8]) {
-            console.log(`${player} has won! Congratulations!`)
+            console.log(`${player} wins top to bottom right`)
             endGameCondition.innerHTML = `Player ${player} has won!`
+            gameOn = false;
             return true;
         } else if (cells[6] === cells[8] && cells[7] === cells[8]) {
-            console.log(`${player} has won! Congratulations!`)
+            console.log(`${player} wins bottom diagonal.`)
             endGameCondition.innerHTML = `Player ${player} has won!`
+            gameOn = false;
             return true;
         }
     };
     // middle position, win top-bottom, vertical and across right-left
     if (cells[4] === player) {
         if (cells[1] === cells[4] && cells[7] === cells[4]) {
-            console.log(`${player} has won! Congratulations!`)
+            console.log(`${player} wins top to bottom middle`)
             endGameCondition.innerHTML = `Player ${player} has won!`
+            gameOn = false;
             return true;
         } else if (cells[3] === cells[4] && cells[5] === cells[4]) {
-            console.log(`${player} has won! Congratulations!`)
+            console.log(`${player} wins middle diagonal`)
             endGameCondition.innerHTML = `Player ${player} has won!`
+            gameOn = false;
             return true;
         } else if (cells[2] === cells[4] && cells[6] === cells[4]) {
-            console.log(`${player} has won! Congratulations!`)
+            console.log(`${player} wins top-right across`)
             endGameCondition.innerHTML = `Player ${player} has won!`
+            gameOn = false;
             return true;
         }
     };
 }
+
+function checkTie() {
+    checkEmptyCells();
+    console.log(`Empty cells length inside checkTie() ${emptyCells.length}`);
+    console.log(`playerWon inside checkTie ${playerWon()}`);
+    if (emptyCells.length === 0 && !playerWon() && gameOn === true) {
+        endGameCondition.innerHTML = "It's a TIE!";
+        timeLeft = -1;
+        return true;
+    } else {
+        return false;
+    }
+};
+
 /** Function returns random player (X or O) */
 function randomPlayerSelection() {
     let randomPlayer = Math.floor(Math.random() * players.length);
@@ -127,27 +150,35 @@ function switchPlayers() {
     }
     playerTurn.innerHTML = `Player ${player} turn`;
 };
-/** Function controls computer play */
-function computerPlay() {
 
-    let emptyCells = [];
-    let randomPlay;
-
+function checkEmptyCells() {
+    emptyCells = [];
     for (let i = 0; i < cells.length; i++) {
         if (cells[i] === null) {
             emptyCells.push(i);
         }
+    };
+    return emptyCells;
+}
+
+/** Function controls computer play */
+function computerPlay() {
+
+    if (gameOn) {
+        let randomPlay;
+        checkEmptyCells();
+        console.log(`emptyCells array inside computerPlay ${emptyCells}`);
+        randomPlay = Math.floor(Math.random() * emptyCells.length);
+        if (emptyCells.length !== 0) {
+            fields[emptyCells[randomPlay]].innerHTML = player;
+            cells[emptyCells[randomPlay]] = player;
+            if (playerWon()) {
+                timeLeft = -1;
+            }
+        } else {
+            checkTie();
+        }
     }
-    console.log(emptyCells);
-    randomPlay = Math.floor(Math.random() * emptyCells.length);
-    console.log(randomPlay);
-    fields[emptyCells[randomPlay]].innerHTML = player;
-    cells[emptyCells[randomPlay]] = player;
-    if (playerWon()) {
-        timeLeft = -1;
-    }
-    switchPlayers();
-    return true;
 };
 /** Function tracks players move across the board */
 function fieldClicked(event) {
@@ -158,19 +189,24 @@ function fieldClicked(event) {
         if (!cells[id]) {
             cells[id] = player;
             event.target.innerText = player;
-            if (playerWon()) {
+            console.log(`checkTie boolean inside fieldClicked ${checkTie()}`);
+            console.log(`playerWon inside fieldClicked ${playerWon()}`);
+            if (playerWon() && checkTie() === false) {
                 timeLeft = -1;
+                console.log(`gameOn inside fieldClicked after checking playerWon and checkTie ${gameOn}`);
             }
         }
         switchPlayers();
         computerPlay();
+        checkTie();
+        switchPlayers();
         for (let field of fields) {
             if (field.innerHTML === "X") {
                 field.style.color = "green";
-            } else if (field.innerHTML === "O") {
+            } else {
                 field.style.color = "red";
             }
-        }  
+        }
     }
 };
 /** Funtion to start timer when user clicks START button */
@@ -196,7 +232,7 @@ function setTimer(event) {
     /** Function starts countdown and executes different code for specific remaining times */
     function countdown() {
 
-        if (timeLeft == -1) {
+        if (timeLeft === -1) {
             timeLeft = 15;
             clearTimeout(timerId);
             // alert("End of game");
