@@ -1,5 +1,6 @@
 let musicMute = true;
 let cells = [null, null, null, null, null, null, null, null, null];
+let players = ["X", "O"]
 let player;
 let timeLeft;
 let gameOn = false;
@@ -46,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fields[i].style.borderLeft = "1px solid var(--gray)";
         };
         fields[i].addEventListener("click", fieldClicked);
+        
     }
 });
 
@@ -113,7 +115,6 @@ function playerWon() {
 }
 /** Function returns random player (X or O) */
 function randomPlayerSelection() {
-    let players = ["X", "O"]
     let randomPlayer = Math.floor(Math.random() * players.length);
     return players[randomPlayer];
 };
@@ -146,6 +147,7 @@ function computerPlay() {
         timeLeft = -1;
     }
     switchPlayers();
+    return true;
 };
 /** Function tracks players move across the board */
 function fieldClicked(event) {
@@ -162,6 +164,13 @@ function fieldClicked(event) {
         }
         switchPlayers();
         computerPlay();
+        for (let field of fields) {
+            if (field.innerHTML === "X") {
+                field.style.color = "green";
+            } else if (field.innerHTML === "O") {
+                field.style.color = "red";
+            }
+        }  
     }
 };
 /** Funtion to start timer when user clicks START button */
@@ -169,6 +178,7 @@ function setTimer(event) {
 
     gameOn = true;
     player = randomPlayerSelection();
+
     endGameCondition.innerHTML = "";
     for (let field of fields) {
         field.innerHTML = null;
