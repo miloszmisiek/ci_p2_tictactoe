@@ -26,27 +26,15 @@ let start = document.getElementById("start-button");
 let reset = document.getElementById("reset-button");
 let mainTheme = document.getElementById("main-theme");
 let volume = document.getElementById("volume");
+let playerTurn = document.getElementById("player-turn");
+let endGameCondition = document.getElementById("end-game-condition");
 
 let musicMute = true;
-let spaces = [null, null, null, null, null, null, null, null, null];
+let cells = [null, null, null, null, null, null, null, null, null];
 let player;
-// let win = playerWon(player);
 let timeLeft;
 
 let gameOn = false;
-
-
-
-let winningConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-];
 
 start.addEventListener("click", setTimer);
 
@@ -73,42 +61,49 @@ function mainThemePause() {
 /** Function to check winning conditions */
 function playerWon() {
     // top right corner, win top horizontal, vertical and across
-    if (spaces[0] === player) {
-        if (spaces[1] === player && spaces[2] === player) {
+    if (cells[0] === player) {
+        if (cells[1] === player && cells[2] === player) {
             console.log(`${player} has won! Congratulations!`)
+            endGameCondition.innerHTML = `${player} has won!`
             return true;
-        } else if (spaces[3] === player && spaces[6] === player) {
+        } else if (cells[3] === player && cells[6] === player) {
             console.log(`${player} has won! Congratulations!`)
+            endGameCondition.innerHTML = `${player} has won!`
             return true;
-        } else if (spaces[4] === player && spaces[8] === player) {
+        } else if (cells[4] === player && cells[8] === player) {
             console.log(`${player} has won! Congratulations!`)
+            endGameCondition.innerHTML = `${player} has won!`
             return true;
         }
     };
     // bottom right corner, win bottom-top, bottom-left
-    if (spaces[8] === player) {
-        if (spaces[2] === player && spaces[5] === player) {
+    if (cells[8] === player) {
+        if (cells[2] === player && cells[5] === player) {
             console.log(`${player} has won! Congratulations!`)
+            endGameCondition.innerHTML = `${player} has won!`
             return true;
-        } else if (spaces[6] === player && spaces[7] === player) {
+        } else if (cells[6] === player && cells[7] === player) {
             console.log(`${player} has won! Congratulations!`)
+            endGameCondition.innerHTML = `${player} has won!`
             return true;
         }
     };
     // middle position, win top-bottom, vertical and across right-left
-    if (spaces[4] === player) {
-        if (spaces[1] === player && spaces[7] === player) {
+    if (cells[4] === player) {
+        if (cells[1] === player && cells[7] === player) {
             console.log(`${player} has won! Congratulations!`)
+            endGameCondition.innerHTML = `${player} has won!`
             return true;
-        } else if (spaces[3] === player && spaces[5] === player) {
+        } else if (cells[3] === player && cells[5] === player) {
             console.log(`${player} has won! Congratulations!`)
+            endGameCondition.innerHTML = `${player} has won!`
             return true;
-        } else if (spaces[2] === player && spaces[6] === player) {
+        } else if (cells[2] === player && cells[6] === player) {
             console.log(`${player} has won! Congratulations!`)
+            endGameCondition.innerHTML = `${player} has won!`
             return true;
         }
     };
-
 }
 
 /** Function returns random player (X or O) */
@@ -119,19 +114,44 @@ function randomPlayerSelection() {
     return players[randomPlayer];
 };
 
+function switchPlayers() {
+    if (player === "X") {
+        player = "O";
+    }
+    else {
+        player = "X";
+    }
+    playerTurn.innerHTML = `Player ${player} turn`;
+}
+
+// function computerPlay() {
+
+//     let emptyCells = [];
+//     let randomPlay;
+
+//     for (var i = 0; i < cells.length; i++) {
+//         if (cells[i].textContent === '') {
+//             cells.push(cells[i]);
+//         }
+//     }
+
+//     randomPlay = Math.floor(Math.random() * emptyCells.length) - 1;
+//     emptyCells[random].innerHTML = player;
+// }
+
 /** Function tracks players move across the board */
 function fieldClicked(event) {
     let id = event.target.id;
     console.log(id);
 
-    if (!spaces[id]) {
-        spaces[id] = player;
+    if (!cells[id]) {
+        cells[id] = player;
         event.target.innerText = player;
         if (playerWon()) {
             timeLeft = -1;
         }
     }
-
+    switchPlayers();
 };
 
 /** Funtion to start timer when user clicks START button */
@@ -147,7 +167,7 @@ function setTimer(event) {
 
     mainThemePlay();
     start.removeEventListener("click", setTimer);
-    document.getElementById("player-turn").innerHTML = `Player ${player} turn`;
+    playerTurn.innerHTML = `Player ${player} turn`;
 
 
     reset.addEventListener("click", (e) => {
@@ -163,8 +183,8 @@ function setTimer(event) {
             alert("End of game");
             gameOn = false;
             document.getElementById("start-button").addEventListener("click", setTimer);
-            for (let i = 0; i < spaces.length; i++) {
-                spaces[i] = null;
+            for (let i = 0; i < cells.length; i++) {
+                cells[i] = null;
             };
             for (let field of fields) {
                 field.innerHTML = null;
@@ -173,7 +193,7 @@ function setTimer(event) {
             mainThemePause();
             mainTheme.currentTime = 0;
             volume.innerHTML = '<i class="fas fa-volume-up"></i>';
-            document.getElementById("player-turn").innerHTML = "";
+            playerTurn.innerHTML = "";
 
         } else {
             if (timeLeft < 10) {
@@ -183,4 +203,4 @@ function setTimer(event) {
             timeLeft--;
         }
     }
-};
+}
