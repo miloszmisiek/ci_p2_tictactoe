@@ -1,26 +1,35 @@
 let musicMute = true;
 let cells = [null, null, null, null, null, null, null, null, null];
 let players = ["X", "O"]
+let suffix = ":";
 let player;
 let timeLeft;
 let emptyCells;
 let gameOn = false;
 
+
 // Elements
 let fields = document.getElementsByClassName("field");
 let start = document.getElementById("start-button");
 let reset = document.getElementById("reset-button");
+let elem = document.getElementById('timer');
 let mainTheme = document.getElementById("main-theme");
 let volume = document.getElementById("volume");
 let playerTurn = document.getElementById("player-turn");
 let endGameCondition = document.getElementById("end-game-condition");
+
+// eventListeners
 start.addEventListener("click", setTimer);
 reset.addEventListener("click", (e) => {
+    gameOn = false;
     timeLeft = -1;
     endGameCondition.innerHTML = "";
     for (let field of fields) {
         field.innerHTML = null;
     };
+    for (let cell of cells) {
+        cell = null;
+    }
 });
 volume.addEventListener("click", (e) => {
     if (!musicMute) {
@@ -29,7 +38,6 @@ volume.addEventListener("click", (e) => {
         mainThemePlay();
     }
 })
-
 // After DOM finis loading, gameboard is drawn by adding respective side of the border based on index number.
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -123,12 +131,14 @@ function playerWon() {
     };
 }
 
+/** Function checks for a tie condition and returns true/false respectively. */
 function checkTie() {
     checkEmptyCells();
     console.log(`Empty cells length inside checkTie() ${emptyCells.length}`);
     console.log(`playerWon inside checkTie ${playerWon()}`);
     if (emptyCells.length === 0 && !playerWon() && gameOn === true) {
         endGameCondition.innerHTML = "It's a TIE!";
+        gameOn = false;
         timeLeft = -1;
         return true;
     } else {
@@ -151,6 +161,7 @@ function switchPlayers() {
     playerTurn.innerHTML = `Player ${player} turn`;
 };
 
+/** Function checks for empty cells and return an array of their indexes */
 function checkEmptyCells() {
     emptyCells = [];
     for (let i = 0; i < cells.length; i++) {
@@ -163,7 +174,7 @@ function checkEmptyCells() {
 
 /** Function controls computer play */
 function computerPlay() {
-
+    suffix = ":";
     if (gameOn) {
         let randomPlay;
         checkEmptyCells();
@@ -172,6 +183,7 @@ function computerPlay() {
         if (emptyCells.length !== 0) {
             fields[emptyCells[randomPlay]].innerHTML = player;
             cells[emptyCells[randomPlay]] = player;
+            setMarkerColors();
             if (playerWon()) {
                 timeLeft = -1;
             }
@@ -180,15 +192,30 @@ function computerPlay() {
         }
     }
 };
+
+function setMarkerColors() {
+    for (let field of fields) {
+        if (field.innerHTML === "X") {
+            field.style.color = "green";
+        } else {
+            field.style.color = "red";
+        }
+    }
+};
+
 /** Function tracks players move across the board */
 function fieldClicked(event) {
     let id = event.target.id;
     console.log(id);
+    suffix = ":";
+    endGameCondition.innerHTML = "";
 
     if (gameOn) {
         if (!cells[id]) {
             cells[id] = player;
             event.target.innerText = player;
+            timeLeft = 15
+            setMarkerColors();
             console.log(`checkTie boolean inside fieldClicked ${checkTie()}`);
             console.log(`playerWon inside fieldClicked ${playerWon()}`);
             if (playerWon() && checkTie() === false) {
@@ -200,13 +227,6 @@ function fieldClicked(event) {
         computerPlay();
         checkTie();
         switchPlayers();
-        for (let field of fields) {
-            if (field.innerHTML === "X") {
-                field.style.color = "green";
-            } else {
-                field.style.color = "red";
-            }
-        }
     }
 };
 /** Funtion to start timer when user clicks START button */
@@ -214,16 +234,14 @@ function setTimer(event) {
 
     gameOn = true;
     player = randomPlayerSelection();
+    let timerId = setInterval(countdown, 1000);
 
     endGameCondition.innerHTML = "";
     for (let field of fields) {
         field.innerHTML = null;
     };
 
-    timeLeft = 120;
-    let elem = document.getElementById('timer');
-    let timerId = setInterval(countdown, 1000);
-    let suffix = ":";
+    timeLeft = 14;
 
     mainThemePlay();
     start.removeEventListener("click", setTimer);
@@ -231,29 +249,37 @@ function setTimer(event) {
 
     /** Function starts countdown and executes different code for specific remaining times */
     function countdown() {
-
         if (timeLeft === -1) {
-            timeLeft = 15;
-            clearTimeout(timerId);
-            // alert("End of game");
-            gameOn = false;
-            document.getElementById("start-button").addEventListener("click", setTimer);
-            for (let i = 0; i < cells.length; i++) {
-                cells[i] = null;
-            };
-            document.getElementById("timer").innerHTML = "00:" + timeLeft + " sec";
-            mainThemePause();
-            mainTheme.currentTime = 0;
-            volume.innerHTML = '<i class="fas fa-volume-up"></i>';
-            playerTurn.innerHTML = "";
-
-
-        } else {
-            if (timeLeft < 10) {
-                suffix = ":0";
-            };
-            elem.innerHTML = "00" + suffix + timeLeft + ' sec';
-            timeLeft--;
-        }
+            if (gameOn) {
+                endGameCondition.innerHTML = `End of time. Next player move.`
+                timeLeft = 15;
+                switchPlayers();
+                computerPlay();
+                switchPlayers();
+            } else {
+                clearTimeout(timerId);
+                // alert("End of game");
+                gameOn = false;
+                document.getElementById("start-button").addEventListener("click", setTimer);
+                for (let i = 0; i < cells.length; i++) {
+                    cells[i] = null;
+                };
+                timeLeft = 15;
+                document.getElementById("timer").innerHTML = "00:" + timeLeft + " sec";
+                mainThemePause();
+                mainTheme.currentTime = 0;
+                volume.innerHTML = '<i class="fas fa-volume-up"></i>';
+                playerTurn.innerHTML = "";
+            }
+    } else {
+        if (timeLeft === 13) {
+            endGameCondition.innerHTML = "";
+        };
+        if (timeLeft < 10) {
+            suffix = ":0";
+        };
+        elem.innerHTML = "00" + suffix + timeLeft + ' sec';
+        timeLeft--;
     }
+};
 };
