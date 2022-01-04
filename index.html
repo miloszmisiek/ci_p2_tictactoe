@@ -12,69 +12,79 @@
 </head>
 
 <body>
+    
     <div id="total-wrapper">
-        <div id="heading-wrapper">
-            <h1 id="game-name">TIC TAC TOE</h1>
-            <!-- data-modal-target is a selector for JS that points out to element to be open with button -->
-            <button data-modal-target="#modal" id="help-button">?</button> 
-            <!-- Modal popup widnow come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw -->
-            <div class="modal" id="modal">
-                <div class="modal-header">
-                    <div class="title">Example Modal</div>
-                    <button data-close-button class="close-button">&times;</button>
-                </div>
-                <div class="modal-body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga debitis exercitationem perferendis
-                    beatae quasi temporibus doloribus, et ut. Vitae, animi. Nisi esse saepe alias dolore! Illo ratione
-                    excepturi pariatur, cumque at illum voluptatibus aliquid eum accusamus nihil voluptate id nisi
-                    officiis voluptatem totam rerum porro iste, unde, labore temporibus laborum doloremque?
-                    Reprehenderit libero mollitia dolorem quos, id maxime, omnis magnam incidunt accusamus aliquam sed
-                    odio pariatur consectetur necessitatibus sunt voluptates qui temporibus quidem. Deserunt, quae quos
-                    possimus illo omnis blanditiis.
-                </div>
+        <div id="overlay"></div>
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <div class="title">Example Modal</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="modal-body">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga debitis exercitationem
+                perferendis
+                beatae quasi temporibus doloribus, et ut. Vitae, animi. Nisi esse saepe alias dolore! Illo
+                ratione
+                excepturi pariatur, cumque at illum voluptatibus aliquid eum accusamus nihil voluptate id
+                nisi
+                officiis voluptatem totam rerum porro iste, unde, labore temporibus laborum doloremque?
+                Reprehenderit libero mollitia dolorem quos, id maxime, omnis magnam incidunt accusamus
+                aliquam
+                sed
+                odio pariatur consectetur necessitatibus sunt voluptates qui temporibus quidem. Deserunt,
+                quae
+                quos
+                possimus illo omnis blanditiis.
             </div>
         </div>
-        <div id="game-controls">
-            <p class="game-control" id="timer">00:30 sec</p>
-            <button class="game-control" id="volume"><i class="fas fa-volume-up"></i></button>
-            <audio id="main-theme" src="assets/audio/BoxCat-Games-Epic-Song.mp3"></audio>
-        </div>
-        <div class="player-info">
-            <p id="player-turn"></p>
-        </div>
-        <div class="board-container">
-            <div id="board">
-                <div class="field" id="0"></div>
-                <div class="field" id="1"></div>
-                <div class="field" id="2"></div>
-                <div class="field" id="3"></div>
-                <div class="field" id="4"></div>
-                <div class="field" id="5"></div>
-                <div class="field" id="6"></div>
-                <div class="field" id="7"></div>
-                <div class="field" id="8"></div>
+        <div class="game-wrapper">
+            <div id="heading-wrapper">
+                <h1 id="game-name">TIC TAC TOE</h1>
+                <!-- data-modal-target is a selector for JS that points out to element to be open with button -->
+                <button data-modal-target="#modal" id="help-button">?</button>
+                <!-- Modal popup widnow come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw -->
+            </div>
+            <div id="game-controls">
+                <p class="game-control" id="timer">00:30 sec</p>
+                <button class="game-control" id="volume"><i class="fas fa-volume-up"></i></button>
+                <audio loop id="main-theme" src="assets/audio/clock-ticking.wav"></audio>
+            </div>
+            <div class="player-info">
+                <p id="player-turn"></p>
+            </div>
+            <div class="board-container">
+                <div id="board">
+                    <div class="field" id="0"></div>
+                    <div class="field" id="1"></div>
+                    <div class="field" id="2"></div>
+                    <div class="field" id="3"></div>
+                    <div class="field" id="4"></div>
+                    <div class="field" id="5"></div>
+                    <div class="field" id="6"></div>
+                    <div class="field" id="7"></div>
+                    <div class="field" id="8"></div>
+                </div>
+            </div>
+            <div class="player-info">
+                <p id="end-game-condition">
+                </p>
+                <audio id="lose-laugh" src="assets/audio/lose_laugh.mp3"></audio>
+                <audio id="win-sound" src="assets/audio/win_sound.mp3"></audio>
+                <audio id="tie-sound" src="assets/audio/tie-sound.mp3"></audio>
+                <audio id="end-time-bell" src="assets/audio/end-time-bell.wav"></audio>
+            </div>
+            <div id="button-wrapper">
+                <button id="start-button">START</button>
+                <button id="reset-button">RESET</button>
+            </div>
+
+            <!-- Score Area copied from Code Institute 'Love Maths' Project -->
+            <div class="score-area">
+                <p class="players">Player score <span id="player-score" class="player-x">0</span></p>
+                <p class="players">Computer score <span id="computer-score" class="player-o">0</span></p>
             </div>
         </div>
-        <div class="player-info">
-            <p id="end-game-condition">
-            </p>
-            <audio id="lose-laugh" src="assets/audio/lose_laugh.mp3"></audio>
-            <audio id="win-sound" src="assets/audio/win_sound.mp3"></audio>
-            <audio id="tie-sound" src="assets/audio/tie-sound.mp3"></audio>
-        </div>
-        <div id="button-wrapper">
-            <button id="start-button">START</button>
-            <button id="reset-button">RESET</button>
-        </div>
-
-        <!-- Score Area copied from Code Institute 'Love Maths' Project -->
-        <div class="score-area">
-            <p class="players">Player score <span id="player-score" class="player-x">0</span></p>
-            <p class="players">Computer score <span id="computer-score" class="player-o">0</span></p>
-        </div>
-
     </div>
-    <div id="overlay"></div>
     <!-- Font Awesome Script -->
     <script src="https://kit.fontawesome.com/d3770dbfff.js" crossorigin="anonymous"></script>
     <!-- Game Logic Script -->

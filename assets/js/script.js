@@ -1,3 +1,5 @@
+// All modal elements, functions and eventListeners come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw
+
 let musicMute = true;
 let cells = [null, null, null, null, null, null, null, null, null];
 let players = ["X", "O"];
@@ -8,7 +10,7 @@ let emptyCells;
 let gameOn = false;
 
 
-// Elements
+// Element
 const openModalButtons = document.querySelectorAll('[data-modal-target]');
 const closeModalButtons = document.querySelectorAll('[data-close-button]');
 const overlay = document.getElementById('overlay');
@@ -17,6 +19,7 @@ let start = document.getElementById("start-button");
 let reset = document.getElementById("reset-button");
 let elem = document.getElementById('timer');
 let mainTheme = document.getElementById("main-theme");
+let endTime = document.getElementById("end-time-bell");
 let loseLaugh = document.getElementById("lose-laugh");
 let winSound = document.getElementById("win-sound");
 let tieSound = document.getElementById("tie-sound");
@@ -71,13 +74,13 @@ overlay.addEventListener('click', () => {
 // DOM Control
 
 function openModal(modal) {
-    if(modal === null) return
+    if (modal === null) return
     modal.classList.add('active');
     overlay.classList.add('active');
 }
 
 function closeModal(modal) {
-    if(modal === null) return
+    if (modal === null) return
     modal.classList.remove('active');
     overlay.classList.remove('active');
 }
@@ -181,6 +184,7 @@ function checkTie() {
     console.log(`Empty cells length inside checkTie() ${emptyCells.length}`);
     console.log(`playerWon inside checkTie ${playerWon()}`);
     if (emptyCells.length === 0 && playerWon() !== true && gameOn === true) {
+        endTime.pause();
         tieSound.play();
         endGameCondition.innerHTML = "It's a TIE!";
         gameOn = false;
@@ -226,11 +230,13 @@ function computerPlay() {
         console.log(`emptyCells array inside computerPlay ${emptyCells}`);
         randomPlay = Math.floor(Math.random() * emptyCells.length);
         if (emptyCells.length !== 0) {
-            fields[emptyCells[randomPlay]].innerHTML = player;
+            let computer = fields[emptyCells[randomPlay]];
+            computer.style.color = "red";
+            computer.innerHTML = player;
             cells[emptyCells[randomPlay]] = player;
-            setMarkerColors();
             if (playerWon()) {
                 timeLeft = -1;
+                endTime.pause();
                 loseLaugh.play();
                 incrementComputerScore();
             }
@@ -258,17 +264,20 @@ function fieldClicked(event) {
     suffix = ":";
     endGameCondition.innerHTML = "";
 
+
     if (gameOn) {
         if (!cells[id]) {
             cells[id] = player;
+            event.target.style.color = "green";
             event.target.innerText = player;
             timeLeft = 15;
-            setMarkerColors();
+
             console.log(`checkTie boolean inside fieldClicked ${checkTie()}`);
             console.log(`playerWon inside fieldClicked ${playerWon()}`);
             if (playerWon() && checkTie() === false) {
                 timeLeft = -1;
                 console.log(`gameOn inside fieldClicked after checking playerWon and checkTie ${gameOn}`);
+                endTime.pause();
                 winSound.play();
                 incrementPlayerScore();
             }
@@ -301,6 +310,7 @@ function setTimer(event) {
     function countdown() {
         if (timeLeft === -1) {
             if (gameOn) {
+                endTime.play();
                 endGameCondition.innerHTML = `End of time. Next player move.`;
                 timeLeft = 15;
                 switchPlayers();
@@ -343,5 +353,5 @@ function incrementPlayerScore() {
 /** Function to increment computer score - based on Code Institute "Love Maths" project. */
 function incrementComputerScore() {
     let oldScore = parseInt(computerScore.innerText);
-    computerScore.innerText = ++ oldScore;
+    computerScore.innerText = ++oldScore;
 }
