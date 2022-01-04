@@ -14,6 +14,9 @@ let start = document.getElementById("start-button");
 let reset = document.getElementById("reset-button");
 let elem = document.getElementById('timer');
 let mainTheme = document.getElementById("main-theme");
+let loseLaugh = document.getElementById("lose-laugh");
+let winSound = document.getElementById("win-sound");
+let tieSound = document.getElementById("tie-sound");
 let volume = document.getElementById("volume");
 let playerTurn = document.getElementById("player-turn");
 let endGameCondition = document.getElementById("end-game-condition");
@@ -72,7 +75,7 @@ function mainThemePause() {
     musicMute = true;
     mainTheme.pause();
     volume.innerHTML = '<i class="fas fa-volume-mute"></i>';
-}
+};
 
 // Gameplay
 /** Function checks winning conditions */
@@ -136,7 +139,8 @@ function checkTie() {
     checkEmptyCells();
     console.log(`Empty cells length inside checkTie() ${emptyCells.length}`);
     console.log(`playerWon inside checkTie ${playerWon()}`);
-    if (emptyCells.length === 0 && !playerWon() && gameOn === true) {
+    if (emptyCells.length === 0 && playerWon() !== true && gameOn === true) {
+        tieSound.play();
         endGameCondition.innerHTML = "It's a TIE!";
         gameOn = false;
         timeLeft = -1;
@@ -186,6 +190,7 @@ function computerPlay() {
             setMarkerColors();
             if (playerWon()) {
                 timeLeft = -1;
+                loseLaugh.play();
             }
         } else {
             checkTie();
@@ -221,6 +226,7 @@ function fieldClicked(event) {
             if (playerWon() && checkTie() === false) {
                 timeLeft = -1;
                 console.log(`gameOn inside fieldClicked after checking playerWon and checkTie ${gameOn}`);
+                winSound.play();
             }
         }
         switchPlayers();
