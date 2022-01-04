@@ -300,7 +300,8 @@ function setTimer(event) {
         field.innerHTML = null;
     }
 
-    timeLeft = 14;
+    timeLeft = 15;
+    document.getElementById("timer").innerHTML = "00:" + timeLeft + " sec";
 
     mainThemePlay();
     start.removeEventListener("click", setTimer);
