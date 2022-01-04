@@ -9,6 +9,9 @@ let gameOn = false;
 
 
 // Elements
+const openModalButtons = document.querySelectorAll('[data-modal-target]');
+const closeModalButtons = document.querySelectorAll('[data-close-button]');
+const overlay = document.getElementById('overlay');
 let fields = document.getElementsByClassName("field");
 let start = document.getElementById("start-button");
 let reset = document.getElementById("reset-button");
@@ -37,14 +40,41 @@ reset.addEventListener("click", (e) => {
     }
 });
 volume.addEventListener("click", (e) => {
-    if (gameOn) {
-        if (!musicMute) {
-            mainThemePause();
-        } else {
-            mainThemePlay();
-        }
+    if (!musicMute) {
+        mainThemePause();
+    } else {
+        mainThemePlay();
     }
 });
+
+openModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = document.querySelector(button.dataset.modalTarget);
+        openModal(modal);
+    })
+})
+
+closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = button.closest('.modal');
+        closeModal(modal);
+    })
+})
+
+// DOM Control
+
+function openModal(modal) {
+    if(modal === null) return
+    modal.classList.add('active');
+    overlay.classList.add('active');
+}
+
+function closeModal(modal) {
+    if(modal === null) return
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+}
+
 // After DOM finis loading, gameboard is drawn by adding respective side of the border based on index number.
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -306,5 +336,5 @@ function incrementPlayerScore() {
 /** Function to increment computer score - based on Code Institute "Love Maths" project. */
 function incrementComputerScore() {
     let oldScore = parseInt(computerScore.innerText);
-    computerScore.innerText = ++oldScore;
+    computerScore.innerText = ++ oldScore;
 }

@@ -48,6 +48,7 @@ h1 {
 }
 
 #help-button {
+    cursor: pointer;
     margin-bottom: 45px;
     margin-left: 10px;
     color: var(--gray);
@@ -56,6 +57,68 @@ h1 {
     height: 35px;
     border-radius: 50%;
     font-size: 25px;
+}
+/* Modal popup styling come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw */
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* scale(0) sets modal to invisible */
+    transition: 200ms ease-in-out; /* gradually apears/disapears over set time frame */
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1); /* sets modal to be visible when active */
+}
+
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.modal-header .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 10px 15px;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, .5);
+    pointer-events: none; /* if overlay is invisible, it will remove the option to capture any click events */
+}
+
+/* When overlay is active, we set opacity to be visible and pointer-events to capture events to disallow for button clicks */
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
 }
 
 /* PLAYER INFORMATION */
@@ -85,6 +148,7 @@ h1 {
 }
 
 #volume {
+    cursor: pointer;
     padding: 10px;
     background: none;
 }
@@ -127,6 +191,7 @@ h1 {
 }
 
 #button-wrapper button {
+    cursor: pointer;
     margin: 30px 40px 0;
     color: var(--gray);
     font-family: 'Patrick Hand', sans-serif;

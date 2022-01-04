@@ -15,7 +15,24 @@
     <div id="total-wrapper">
         <div id="heading-wrapper">
             <h1 id="game-name">TIC TAC TOE</h1>
-            <button id="help-button">?</button>
+            <!-- data-modal-target is a selector for JS that points out to element to be open with button -->
+            <button data-modal-target="#modal" id="help-button">?</button> 
+            <!-- Modal popup widnow come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw -->
+            <div class="modal" id="modal">
+                <div class="modal-header">
+                    <div class="title">Example Modal</div>
+                    <button data-close-button class="close-button">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga debitis exercitationem perferendis
+                    beatae quasi temporibus doloribus, et ut. Vitae, animi. Nisi esse saepe alias dolore! Illo ratione
+                    excepturi pariatur, cumque at illum voluptatibus aliquid eum accusamus nihil voluptate id nisi
+                    officiis voluptatem totam rerum porro iste, unde, labore temporibus laborum doloremque?
+                    Reprehenderit libero mollitia dolorem quos, id maxime, omnis magnam incidunt accusamus aliquam sed
+                    odio pariatur consectetur necessitatibus sunt voluptates qui temporibus quidem. Deserunt, quae quos
+                    possimus illo omnis blanditiis.
+                </div>
+            </div>
         </div>
         <div id="game-controls">
             <p class="game-control" id="timer">00:30 sec</p>
@@ -57,6 +74,7 @@
         </div>
 
     </div>
+    <div id="overlay"></div>
     <!-- Font Awesome Script -->
     <script src="https://kit.fontawesome.com/d3770dbfff.js" crossorigin="anonymous"></script>
     <!-- Game Logic Script -->
