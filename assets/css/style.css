@@ -75,13 +75,16 @@ h1 {
     border-radius: 50%;
     font-size: 25px;
 }
+
 /* Modal popup styling come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw */
 .modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0); /* scale(0) sets modal to invisible */
-    transition: 200ms ease-in-out; /* gradually apears/disapears over set time frame */
+    transform: translate(-50%, -50%) scale(0);
+    /* scale(0) sets modal to invisible */
+    transition: 200ms ease-in-out;
+    /* gradually apears/disapears over set time frame */
     border: 1px solid black;
     border-radius: 10px;
     z-index: 15;
@@ -91,7 +94,8 @@ h1 {
 }
 
 .modal.active {
-    transform: translate(-50%, -50%) scale(1); /* sets modal to be visible when active */
+    transform: translate(-50%, -50%) scale(1);
+    /* sets modal to be visible when active */
     z-index: 10;
 }
 
@@ -129,8 +133,9 @@ h1 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0, .5);
-    pointer-events: none; /* if overlay is invisible, it will remove the option to capture any click events */
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+    /* if overlay is invisible, it will remove the option to capture any click events */
 }
 
 /* When overlay is active, we set opacity to be visible and pointer-events to capture events to disallow for button clicks */
@@ -225,11 +230,6 @@ h1 {
     border-radius: 18%;
 }
 
-#button-wrapper button:hover {
-    padding: 15px 35px;
-    font-size: 30px;
-}
-
 /* SCORES AREA */
 /* All 'score' elements copied and modified from Code Institute 'Love Maths' project */
 .score-area {
@@ -265,11 +265,11 @@ h1 {
 }
 
 @media screen and (max-width: 700px) {
-    
+
     h1 {
         font-size: 48px;
     }
-    
+
     /* .game-wrapper {
         background: white;
     } */
@@ -287,7 +287,8 @@ h1 {
     }
 }
 
-@media screen and (max-width: 480px), screen and (max-height: 600px) {
+@media screen and (max-width: 480px),
+screen and (max-height: 600px) {
 
     h1 {
         font-size: 24px;
@@ -303,11 +304,12 @@ h1 {
         height: 25px;
         font-size: 18px;
     }
-    
+
     .game-wrapper {
         max-width: 97%;
         max-height: 95%;
         padding: 0;
+        height: 600px;
     }
 
     #game-controls {
@@ -350,11 +352,15 @@ h1 {
     }
 
     .players {
-        padding: 20px;
+        padding: 10px 20px;
     }
 
     .player-info p {
         font-size: 18px;
+    }
+
+    #button-wrapper {
+        margin-right: 0;
     }
 
     #button-wrapper button {
