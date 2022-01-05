@@ -163,7 +163,7 @@ function playerWon() {
             document.getElementById("0").style.backgroundColor = "#fbd489";
             document.getElementById("1").style.backgroundColor = "#fbd489";
             document.getElementById("2").style.backgroundColor = "#fbd489";
-            start.innerHTML = "PLAY AGAIN";
+            start.innerHTML = "RESTART";
             return true;
         } else if (cells[3] === cells[0] && cells[6] === cells[0]) {
             // console.log(`${player} wins top to bottom - left`);
@@ -171,7 +171,7 @@ function playerWon() {
             document.getElementById("0").style.backgroundColor = "#fbd489";
             document.getElementById("3").style.backgroundColor = "#fbd489";
             document.getElementById("6").style.backgroundColor = "#fbd489";
-            start.innerHTML = "PLAY AGAIN";
+            start.innerHTML = "RESTART";
             return true;
         } else if (cells[4] === cells[0] && cells[8] === cells[0]) {
             // console.log(`${player} wins top-left across`);
@@ -179,7 +179,7 @@ function playerWon() {
             document.getElementById("0").style.backgroundColor = "#fbd489";
             document.getElementById("4").style.backgroundColor = "#fbd489";
             document.getElementById("8").style.backgroundColor = "#fbd489";
-            start.innerHTML = "PLAY AGAIN";
+            start.innerHTML = "RESTART";
             return true;
         }
     }
@@ -191,7 +191,7 @@ function playerWon() {
             document.getElementById("8").style.backgroundColor = "#fbd489";
             document.getElementById("2").style.backgroundColor = "#fbd489";
             document.getElementById("5").style.backgroundColor = "#fbd489";
-            start.innerHTML = "PLAY AGAIN";
+            start.innerHTML = "RESTART";
             return true;
         } else if (cells[6] === cells[8] && cells[7] === cells[8]) {
             // console.log(`${player} wins bottom diagonal.`);
@@ -199,7 +199,7 @@ function playerWon() {
             document.getElementById("8").style.backgroundColor = "#fbd489";
             document.getElementById("6").style.backgroundColor = "#fbd489";
             document.getElementById("7").style.backgroundColor = "#fbd489";
-            start.innerHTML = "PLAY AGAIN";
+            start.innerHTML = "RESTART";
             return true;
         }
     }
@@ -211,7 +211,7 @@ function playerWon() {
             document.getElementById("4").style.backgroundColor = "#fbd489";
             document.getElementById("1").style.backgroundColor = "#fbd489";
             document.getElementById("7").style.backgroundColor = "#fbd489";
-            start.innerHTML = "PLAY AGAIN";
+            start.innerHTML = "RESTART";
             return true;
         } else if (cells[3] === cells[4] && cells[5] === cells[4]) {
             // console.log(`${player} wins middle diagonal`);
@@ -219,7 +219,7 @@ function playerWon() {
             document.getElementById("4").style.backgroundColor = "#fbd489";
             document.getElementById("3").style.backgroundColor = "#fbd489";
             document.getElementById("5").style.backgroundColor = "#fbd489";
-            start.innerHTML = "PLAY AGAIN";
+            start.innerHTML = "RESTART";
             return true;
         } else if (cells[2] === cells[4] && cells[6] === cells[4]) {
             // console.log(`${player} wins top-right across`);
@@ -227,7 +227,7 @@ function playerWon() {
             document.getElementById("4").style.backgroundColor = "#fbd489";
             document.getElementById("2").style.backgroundColor = "#fbd489";
             document.getElementById("6").style.backgroundColor = "#fbd489";
-            start.innerHTML = "PLAY AGAIN";
+            start.innerHTML = "RESTART";
             return true;
         }
     }
@@ -242,7 +242,7 @@ function checkTie() {
         endTime.pause();
         tieSound.play();
         endGameCondition.innerHTML = "It's a TIE!";
-        start.innerHTML = "PLAY AGAIN";
+        start.innerHTML = "RESTART";
         gameOn = false;
         timeLeft = -1;
         return true;
@@ -305,12 +305,12 @@ function computerPlay() {
 /** Function tracks players move across the board */
 function fieldClicked(event) {
     let id = event.target.id;
+    let playerMove = true;
     console.log(id);
     suffix = ":";
     endGameCondition.innerHTML = "";
     playerTurn.innerHTML = "";
     computerTurn.innerHTML = '';
-
 
     if (gameOn) {
         if (!cells[id]) {
@@ -319,7 +319,7 @@ function fieldClicked(event) {
             event.target.innerText = player;
             markerSound.play();
             timeLeft = 15;
-
+            playerMove = false;
             // console.log(`checkTie boolean inside fieldClicked ${checkTie()}`);
             // console.log(`playerWon inside fieldClicked ${playerWon()}`);
             if (playerWon() && checkTie() === false) {
@@ -332,10 +332,13 @@ function fieldClicked(event) {
                 endGameCondition.innerHTML = '<span class="player-x">PLAYER</span> has won!';
             }
         }
-        switchPlayers();
-        computerPlay();
-        checkTie();
-        switchPlayers();
+        if (playerMove === false) {
+            switchPlayers();
+            computerPlay();
+            checkTie();
+            switchPlayers();
+        }
+
     }
 }
 /** Funtion to start timer when user clicks START button */
@@ -349,7 +352,7 @@ function setTimer(event) {
     } else {
         computer = 'X';
     }
-    
+
     playerTurn.innerHTML = `Player: <span class="player-x">${player}</span>`;
     computerTurn.innerHTML = `Computer: <span class="player-o">${computer}</span>`;
     let timerId = setInterval(countdown, 1000);
