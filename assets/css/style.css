@@ -242,7 +242,6 @@ h1 {
 
 .players {
     padding: 25px;
-    font-size: 1.25em;
 }
 
 
@@ -259,51 +258,16 @@ h1 {
 /* RESPONSIVNESS */
 
 @media screen and (max-height: 850px) and (max-width: 420px) {
-    body {
-        background: none;
-    }
 
     .game-wrapper {
         padding: 0;
     }
 }
 
-@media screen and (max-width: 480px), screen and (max-height: 600px) {
-
-    h1 {
-        font-size: 40px;
-    }
-
-    #heading-wrapper button {
-        margin-bottom: 25px;
-    }
-
-    .player-info p {
-        font-size: 25px;
-    }
-
-    #board {
-        width: 300px;
-    }
-
-    .field {
-        height: 100px;
-        width: 100px;
-    }
-
-    #button-wrapper button {
-        margin: 10px 25px 0;
-        font-size: 20px;
-    }
-
-
-}
-
 @media screen and (max-width: 700px) {
     
     h1 {
         font-size: 48px;
-        padding-top: 50px;
     }
     
     /* .game-wrapper {
@@ -319,6 +283,83 @@ h1 {
 
 @media screen and (max-height: 1100px) {
     .game-wrapper {
-        padding: 65px;
+        padding: px;
+    }
+}
+
+@media screen and (max-width: 480px), screen and (max-height: 600px) {
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #heading-wrapper {
+        margin-top: 15px;
+    }
+
+    #help-button {
+        margin-bottom: 0;
+        width: 25px;
+        height: 25px;
+        font-size: 18px;
+    }
+    
+    .game-wrapper {
+        max-width: 97%;
+        max-height: 95%;
+        padding: 0;
+    }
+
+    #game-controls {
+        margin-right: 0;
+        margin-top: 0;
+        font-size: 20px;
+    }
+
+    .player-info {
+        height: 25px;
+        margin-right: 0;
+    }
+
+    .player-turn {
+        margin-right: 0;
+        margin-top: 0;
+        font-size: 20px;
+    }
+
+    .game-control {
+        font-size: 20px;
+    }
+
+    .board-container {
+        margin: 10px 30px;
+    }
+
+    #board {
+        width: 240px;
+    }
+
+    .field {
+        height: 80px;
+        width: 80px;
+    }
+
+    .score-area {
+        font-size: 1.1rem;
+        margin-right: 0;
+    }
+
+    .players {
+        padding: 20px;
+    }
+
+    .player-info p {
+        font-size: 18px;
+    }
+
+    #button-wrapper button {
+        margin: 10px 25px 0;
+        font-size: 20px;
+        padding: 5px 20px;
     }
 }
