@@ -12,77 +12,78 @@
 </head>
 
 <body>
-    
-    <div id="total-wrapper">
-        <div id="overlay"></div>
-        <div class="modal" id="modal">
-            <div class="modal-header">
-                <div class="title">Example Modal</div>
-                <button data-close-button class="close-button">&times;</button>
-            </div>
-            <div class="modal-body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga debitis exercitationem
-                perferendis
-                beatae quasi temporibus doloribus, et ut. Vitae, animi. Nisi esse saepe alias dolore! Illo
-                ratione
-                excepturi pariatur, cumque at illum voluptatibus aliquid eum accusamus nihil voluptate id
-                nisi
-                officiis voluptatem totam rerum porro iste, unde, labore temporibus laborum doloremque?
-                Reprehenderit libero mollitia dolorem quos, id maxime, omnis magnam incidunt accusamus
-                aliquam
-                sed
-                odio pariatur consectetur necessitatibus sunt voluptates qui temporibus quidem. Deserunt,
-                quae
-                quos
-                possimus illo omnis blanditiis.
+    <div id="overlay"></div>
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="title">Instructions</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Challange yourself against computer in famous Tic Tac Toe game!<br>
+                <br>
+                Player marker: <span class="player-x">green</span>.<br>
+                Computer marker: <span class="player-o">red</span>.<br>
+                <br>
+                Click START to start the game.<br>
+                Click RESET to reset the game.<br>
+                Click <i class="fas fa-volume-up"></i> to mute the sounds.<br>
+                Click <i class="fas fa-volume-mute"></i> to unmute the sounds. <br>
+                <br>
+                You have 15 seconds to make a move, after that the move is passed to computer.
+                Markers 'X' and 'O' are selected randomly for player and computer.
+                Click the field to make a move. To win a game you must place 3 markers next to each other horizontally,
+                vertically or diagonally on the gameboard. You can mute the sounds by clicking volume icon. Below START
+                and RESET buttons there is counter for your and computer wins.
+
+            </p>
+
+        </div>
+    </div>
+    <div class="game-wrapper">
+        <div id="heading-wrapper">
+            <h1 id="game-name">TIC TAC TOE</h1>
+            <!-- data-modal-target is a selector for JS that points out to element to be open with button -->
+            <button data-modal-target="#modal" id="help-button">?</button>
+            <!-- Modal popup widnow come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw -->
+        </div>
+        <div id="game-controls">
+            <p class="game-control" id="timer">00:15 sec</p>
+            <button class="game-control" id="volume"><i class="fas fa-volume-up"></i></button>
+            <audio loop id="main-theme" src="assets/audio/clock-ticking.wav"></audio>
+        </div>
+        <div class="player-info">
+            <p id="player-turn"></p>
+        </div>
+        <div class="board-container">
+            <div id="board">
+                <div class="field" id="0"></div>
+                <div class="field" id="1"></div>
+                <div class="field" id="2"></div>
+                <div class="field" id="3"></div>
+                <div class="field" id="4"></div>
+                <div class="field" id="5"></div>
+                <div class="field" id="6"></div>
+                <div class="field" id="7"></div>
+                <div class="field" id="8"></div>
             </div>
         </div>
-        <div class="game-wrapper">
-            <div id="heading-wrapper">
-                <h1 id="game-name">TIC TAC TOE</h1>
-                <!-- data-modal-target is a selector for JS that points out to element to be open with button -->
-                <button data-modal-target="#modal" id="help-button">?</button>
-                <!-- Modal popup widnow come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw -->
-            </div>
-            <div id="game-controls">
-                <p class="game-control" id="timer">00:15 sec</p>
-                <button class="game-control" id="volume"><i class="fas fa-volume-up"></i></button>
-                <audio loop id="main-theme" src="assets/audio/clock-ticking.wav"></audio>
-            </div>
-            <div class="player-info">
-                <p id="player-turn"></p>
-            </div>
-            <div class="board-container">
-                <div id="board">
-                    <div class="field" id="0"></div>
-                    <div class="field" id="1"></div>
-                    <div class="field" id="2"></div>
-                    <div class="field" id="3"></div>
-                    <div class="field" id="4"></div>
-                    <div class="field" id="5"></div>
-                    <div class="field" id="6"></div>
-                    <div class="field" id="7"></div>
-                    <div class="field" id="8"></div>
-                </div>
-            </div>
-            <div class="player-info">
-                <p id="end-game-condition">
-                </p>
-                <audio id="lose-laugh" src="assets/audio/lose_laugh.mp3"></audio>
-                <audio id="win-sound" src="assets/audio/win_sound.mp3"></audio>
-                <audio id="tie-sound" src="assets/audio/tie-sound.mp3"></audio>
-                <audio id="end-time-bell" src="assets/audio/end-time-bell.wav"></audio>
-            </div>
-            <div id="button-wrapper">
-                <button id="start-button">START</button>
-                <button id="reset-button">RESET</button>
-            </div>
+        <div class="player-info">
+            <p id="end-game-condition">
+            </p>
+            <audio id="lose-laugh" src="assets/audio/lose_laugh.mp3"></audio>
+            <audio id="win-sound" src="assets/audio/win_sound.mp3"></audio>
+            <audio id="tie-sound" src="assets/audio/tie-sound.mp3"></audio>
+            <audio id="end-time-bell" src="assets/audio/end-time-bell.wav"></audio>
+        </div>
+        <div id="button-wrapper">
+            <button id="start-button">START</button>
+            <button id="reset-button">RESET</button>
+        </div>
 
-            <!-- Score Area copied from Code Institute 'Love Maths' Project -->
-            <div class="score-area">
-                <p class="players">Player score <span id="player-score" class="player-x">0</span></p>
-                <p class="players">Computer score <span id="computer-score" class="player-o">0</span></p>
-            </div>
+        <!-- Score Area copied from Code Institute 'Love Maths' Project -->
+        <div class="score-area">
+            <p class="players">Player score <span id="player-score" class="player-x">0</span></p>
+            <p class="players">Computer score <span id="computer-score" class="player-o">0</span></p>
         </div>
     </div>
     <!-- Font Awesome Script -->

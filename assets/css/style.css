@@ -17,19 +17,22 @@
 body {
     color: var(--gray);
     font-family: 'Patrick Hand', sans-serif;
+    background: url("../images/background.webp");
+    background-size: cover;
 }
 
-#total-wrapper {
+/* #total-wrapper {
     height: 100vh;
     border: 1px solid red;
     background: url("../images/background.webp");
+    background-size: cover;
 
-    /* below to consider for aliging center all the elements --> some work on margins/paddings other elements needed */
-    /* display: flex;
+
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; */
-}
+    flex-direction: column;
+} */
 
 .game-wrapper {
     background: url(../images/background-board.png);
@@ -38,7 +41,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 50px;
+    padding: 65px;
     z-index: 0;
 }
 
@@ -47,7 +50,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 12vh;
+    /* height: 12vh; */
     /* margin-top: 20px; */
     /* border: 1px solid blue; */
 }
@@ -239,7 +242,18 @@ h1 {
 }
 
 /* RESPONSIVNESS */
-@media screen and (max-width: 480px) {
+
+@media screen and (max-height: 850px) and (max-width: 420px) {
+    body {
+        background: none;
+    }
+
+    .game-wrapper {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 480px), screen and (max-height: 600px) {
 
     h1 {
         font-size: 40px;
@@ -268,4 +282,10 @@ h1 {
     }
 
 
+}
+
+@media screen and (max-width: 700px) {
+    .game-wrapper {
+        background: white;
+    }
 }

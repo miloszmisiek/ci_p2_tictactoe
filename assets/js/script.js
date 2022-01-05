@@ -32,11 +32,13 @@ let endGameCondition = document.getElementById("end-game-condition");
 // eventListeners
 start.addEventListener("click", setTimer);
 reset.addEventListener("click", (e) => {
+    suffix = ":"
     gameOn = false;
     timeLeft = -1;
     endGameCondition.innerHTML = "";
     for (let field of fields) {
         field.innerHTML = null;
+        field.style.backgroundColor = "transparent";
     }
     for (let cell of cells) {
         cell = null;
@@ -44,9 +46,11 @@ reset.addEventListener("click", (e) => {
 });
 volume.addEventListener("click", (e) => {
     if (!musicMute) {
-        mainThemePause();
+        // mainThemePause();
+        mutePage();
     } else {
-        mainThemePlay();
+        // mainThemePlay();
+        unMutePage();
     }
 });
 
@@ -108,17 +112,39 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Sounds
-/** Function plays main theme */
-function mainThemePlay() {
-    musicMute = false;
-    mainTheme.play();
-    volume.innerHTML = '<i class="fas fa-volume-up"></i>';
-}
-/** Function pause main theme */
-function mainThemePause() {
+
+
+// Mute a singular HTML5 element (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+function muteMe(elem) {
     musicMute = true;
-    mainTheme.pause();
+    elem.muted = true;
+    elem.pause();
+}
+
+// Unmute a singular HTML5 element and plays only mainTheme (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+function playMe(elem) {
+    musicMute = false;
+    elem.muted = false;
+    mainTheme.play();
+}
+
+// Mute all video and audio elements on the page (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+function mutePage() {
+    var elems = document.querySelectorAll("video, audio");
+
+    [].forEach.call(elems, function (elem) {
+        muteMe(elem);
+    });
     volume.innerHTML = '<i class="fas fa-volume-mute"></i>';
+}
+
+// Unute all video and audio elements on the page and plays mainTheme (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+function unMutePage() {
+    var elems = document.querySelectorAll("video, audio");
+    [].forEach.call(elems, function (elem) {
+        playMe(elem);
+    });
+    volume.innerHTML = '<i class="fas fa-volume-up"></i>';
 }
 
 // Gameplay
@@ -130,16 +156,25 @@ function playerWon() {
             console.log(`${player} wins top diagonal`);
             endGameCondition.innerHTML = `Player ${player} has won!`;
             gameOn = false;
+            document.getElementById("0").style.backgroundColor = "#fbd489";
+            document.getElementById("1").style.backgroundColor = "#fbd489";
+            document.getElementById("2").style.backgroundColor = "#fbd489";
             return true;
         } else if (cells[3] === cells[0] && cells[6] === cells[0]) {
             console.log(`${player} wins top to bottom - left`);
             endGameCondition.innerHTML = `Player ${player} has won!`;
             gameOn = false;
+            document.getElementById("0").style.backgroundColor = "#fbd489";
+            document.getElementById("3").style.backgroundColor = "#fbd489";
+            document.getElementById("6").style.backgroundColor = "#fbd489";
             return true;
         } else if (cells[4] === cells[0] && cells[8] === cells[0]) {
             console.log(`${player} wins top-left across`);
             endGameCondition.innerHTML = `Player ${player} has won!`;
             gameOn = false;
+            document.getElementById("0").style.backgroundColor = "#fbd489";
+            document.getElementById("4").style.backgroundColor = "#fbd489";
+            document.getElementById("8").style.backgroundColor = "#fbd489";
             return true;
         }
     }
@@ -149,11 +184,17 @@ function playerWon() {
             console.log(`${player} wins top to bottom right`);
             endGameCondition.innerHTML = `Player ${player} has won!`;
             gameOn = false;
+            document.getElementById("8").style.backgroundColor = "#fbd489";
+            document.getElementById("2").style.backgroundColor = "#fbd489";
+            document.getElementById("5").style.backgroundColor = "#fbd489";
             return true;
         } else if (cells[6] === cells[8] && cells[7] === cells[8]) {
             console.log(`${player} wins bottom diagonal.`);
             endGameCondition.innerHTML = `Player ${player} has won!`;
             gameOn = false;
+            document.getElementById("8").style.backgroundColor = "#fbd489";
+            document.getElementById("6").style.backgroundColor = "#fbd489";
+            document.getElementById("7").style.backgroundColor = "#fbd489";
             return true;
         }
     }
@@ -163,16 +204,25 @@ function playerWon() {
             console.log(`${player} wins top to bottom middle`);
             endGameCondition.innerHTML = `Player ${player} has won!`;
             gameOn = false;
+            document.getElementById("4").style.backgroundColor = "#fbd489";
+            document.getElementById("1").style.backgroundColor = "#fbd489";
+            document.getElementById("7").style.backgroundColor = "#fbd489";
             return true;
         } else if (cells[3] === cells[4] && cells[5] === cells[4]) {
             console.log(`${player} wins middle diagonal`);
             endGameCondition.innerHTML = `Player ${player} has won!`;
             gameOn = false;
+            document.getElementById("4").style.backgroundColor = "#fbd489";
+            document.getElementById("3").style.backgroundColor = "#fbd489";
+            document.getElementById("5").style.backgroundColor = "#fbd489";
             return true;
         } else if (cells[2] === cells[4] && cells[6] === cells[4]) {
             console.log(`${player} wins top-right across`);
             endGameCondition.innerHTML = `Player ${player} has won!`;
             gameOn = false;
+            document.getElementById("4").style.backgroundColor = "#fbd489";
+            document.getElementById("2").style.backgroundColor = "#fbd489";
+            document.getElementById("6").style.backgroundColor = "#fbd489";
             return true;
         }
     }
@@ -207,7 +257,6 @@ function switchPlayers() {
     } else {
         player = "X";
     }
-    playerTurn.innerHTML = `Player ${player} turn`;
 }
 
 /** Function checks for empty cells and return an array of their indexes */
@@ -293,19 +342,25 @@ function setTimer(event) {
 
     gameOn = true;
     player = randomPlayerSelection();
+    let computer;
+    if (player === 'X') {
+        computer = 'O';
+    } else {
+        computer = 'X';
+    }
+    playerTurn.innerHTML = `Player's Marker: ${player}<br>Computer's Marker: ${computer}`
     let timerId = setInterval(countdown, 1000);
 
     endGameCondition.innerHTML = "";
     for (let field of fields) {
         field.innerHTML = null;
+        field.style.backgroundColor = "transparent";
     }
 
-    timeLeft = 15;
-    document.getElementById("timer").innerHTML = "00:" + timeLeft + " sec";
+    timeLeft = 14;
 
     mainThemePlay();
     start.removeEventListener("click", setTimer);
-    playerTurn.innerHTML = `Player ${player} turn`;
 
     /** Function starts countdown and executes different code for specific remaining times */
     function countdown() {
@@ -338,6 +393,7 @@ function setTimer(event) {
             }
             if (timeLeft < 10) {
                 suffix = ":0";
+                playerTurn.innerHTML = "";
             }
             elem.innerHTML = "00" + suffix + timeLeft + ' sec';
             timeLeft--;
