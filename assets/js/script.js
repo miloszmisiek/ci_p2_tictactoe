@@ -1,55 +1,53 @@
 // All modal elements, functions and eventListeners come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw
 
+// GLOBAL VARIABLES (Gameplay Control)
 let musicMute = false;
 let cells = [null, null, null, null, null, null, null, null, null];
 let players = ["X", "O"];
-let suffix = ":";
 let player;
 let timeLeft;
 let emptyCells;
 let gameOn = false;
 
 
-// Element
-const openModalButtons = document.querySelectorAll('[data-modal-target]');
-const closeModalButtons = document.querySelectorAll('[data-close-button]');
-const overlay = document.getElementById('overlay');
-let fields = document.getElementsByClassName("field");
-let start = document.getElementById("start-button");
-let reset = document.getElementById("reset-button");
-let elem = document.getElementById('timer');
-let mainTheme = document.getElementById("main-theme");
-let endTime = document.getElementById("end-time-bell");
-let loseLaugh = document.getElementById("lose-laugh");
-let winSound = document.getElementById("win-sound");
-let tieSound = document.getElementById("tie-sound");
-let markerSound = document.getElementById("marker-sound");
-let playerScore = document.getElementById("player-score");
-let computerScore = document.getElementById("computer-score");
-let volume = document.getElementById("volume");
-let playerTurn = document.getElementById("player");
-let computerTurn = document.getElementById("computer");
-let endGameCondition = document.getElementById("end-game-condition");
+// EVENT LISTENERS
 
-// eventListeners
-start.addEventListener("click", setTimer);
-reset.addEventListener("click", (e) => {
+// Start Button event listener - on click the function setTimer is executed.
+document.getElementById("start-button").addEventListener("click", setTimer);
+
+// Reset Button event listener - resets timer, clears gameplay messages, clears the board and resets the scores.
+document.getElementById("reset-button").addEventListener("click", (e) => {
+
+    let endGameCondition = document.getElementById("end-game-condition");
+    let computerScore = document.getElementById("computer-score");
+    let playerScore = document.getElementById("player-score");
+    let start = document.getElementById("start-button");
+    let fields = document.getElementsByClassName("field");
+    let suffix = ":";
+
+    gameOn = false;
+    timeLeft = -1;
+
     start.innerHTML = "START";
     playerScore.innerText = "0";
     computerScore.innerText = "0";
-    suffix = ":"
-    gameOn = false;
-    timeLeft = -1;
     endGameCondition.innerHTML = "";
+
+    // For loop to clear all the gameboard fields
     for (let field of fields) {
         field.innerHTML = null;
         field.style.backgroundColor = "transparent";
     }
+
+    // For loop to clear all cells array which is used to control movement on the gameboard fields
     for (let cell of cells) {
         cell = null;
     }
+
 });
-volume.addEventListener("click", (e) => {
+
+// Volume Button evenet listener - mutes/unmutes the page depending on gameOn and musicMute boolean values.
+document.getElementById("volume").addEventListener("click", (e) => {
     if (gameOn) {
         if (!musicMute) {
             mutePage();
@@ -59,7 +57,8 @@ volume.addEventListener("click", (e) => {
     }
 });
 
-openModalButtons.forEach(button => {
+// Iteration through every button element in HTML to execute an openModal function for elements with specified selector - come from https://www.youtube.com/watch?v=MBaw_6cPmAw
+document.querySelectorAll('[data-modal-target]').forEach(button => {
     button.addEventListener('click', () => {
         if (gameOn === false) {
             const modal = document.querySelector(button.dataset.modalTarget);
@@ -68,37 +67,44 @@ openModalButtons.forEach(button => {
     })
 })
 
-closeModalButtons.forEach(button => {
+// Iteration through every button element in HTML to execute a closeModal function for elements with specified parent class - come from https://www.youtube.com/watch?v=MBaw_6cPmAw
+document.querySelectorAll('[data-close-button]').forEach(button => {
     button.addEventListener('click', () => {
-        const modal = button.closest('.modal');
+        const modal = button.closest('.modal'); // looks for the closest parent with 'modal' class
         closeModal(modal);
     })
-})
+});
 
-overlay.addEventListener('click', () => {
+// Overlay event listener - iterates through elements with specified selector and executes the closeModal function if applicable - come from https://www.youtube.com/watch?v=MBaw_6cPmAw
+document.getElementById('overlay').addEventListener('click', () => {
     const modals = document.querySelectorAll('.modal.active');
     modals.forEach(modal => {
         closeModal(modal);
     })
-})
+});
 
-// DOM Control
+// DOM CONTROL
 
+/** Function adds class '.active' to modal argument to control the popup window operation, or returns nothing if modal element is null - come from https://www.youtube.com/watch?v=MBaw_6cPmAw */
 function openModal(modal) {
     if (modal === null) return
     modal.classList.add('active');
     overlay.classList.add('active');
 }
 
+/** Function removes class '.active' to modal argument to control the popup window operation, or returns nothing if modal element is null - come from https://www.youtube.com/watch?v=MBaw_6cPmAw */
 function closeModal(modal) {
     if (modal === null) return
     modal.classList.remove('active');
     overlay.classList.remove('active');
 }
 
-// After DOM finis loading, gameboard is drawn by adding respective side of the border based on index number.
+// Event listener to execute gamboard creation after DOM finish loading. 
 document.addEventListener("DOMContentLoaded", function () {
 
+    let fields = document.getElementsByClassName("field");
+
+    // For loop iterates through all HTML elements with 'field' class and adds respective side of border to create the Tic Tac Toe grid.
     for (let i = 0; i < fields.length; i++) {
 
         if (i < 3) {
@@ -113,151 +119,208 @@ document.addEventListener("DOMContentLoaded", function () {
         if (i % 3 === 2) {
             fields[i].style.borderLeft = "1px solid var(--gray)";
         }
+
+        // Event listener to follow gameboard moves
         fields[i].addEventListener("click", fieldClicked);
 
     }
 });
 
-// Sounds
-// Mute a singular HTML5 element (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+// SOUNDS
+
+// Mutes a singular HTML5 element (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
 function muteMe(elem) {
+
     musicMute = true;
     elem.muted = true;
+
     elem.pause();
 }
 
-// Unmute a singular HTML5 element and plays only mainTheme (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+// Unmutes a singular HTML5 element and plays only mainTheme element (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
 function playMe(elem) {
+
+    let mainTheme = document.getElementById("main-theme");
+
     musicMute = false;
     elem.muted = false;
+
     mainTheme.play();
 }
 
-// Mute all video and audio elements on the page (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+// Mutes all video and audio elements on the page and changes volume button icon (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
 function mutePage() {
+
+    let volume = document.getElementById("volume");
     var elems = document.querySelectorAll("video, audio");
 
     [].forEach.call(elems, function (elem) {
         muteMe(elem);
     });
+
     volume.innerHTML = '<i class="fas fa-volume-mute"></i>';
 }
 
-// Unute all video and audio elements on the page and plays mainTheme (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+// Unutes all video and audio elements on the page, plays mainTheme and changes volume button icon  (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
 function unMutePage() {
+
+    let volume = document.getElementById("volume");
     var elems = document.querySelectorAll("video, audio");
+
     [].forEach.call(elems, function (elem) {
         playMe(elem);
     });
+
     volume.innerHTML = '<i class="fas fa-volume-up"></i>';
 }
 
-// Gameplay
+// GAMEPLAY
+
 /** Function checks winning conditions */
 function playerWon() {
-    // top right corner, win top horizontal, vertical and across
+
+    let start = document.getElementById("start-button");
+
+    // Top right corner, win top horizontal, vertical and diagonal
     if (cells[0] === player) {
+
         if (cells[1] === cells[0] && cells[2] === cells[0]) {
-            // console.log(`${player} wins top diagonal`);
+
             gameOn = false;
             document.getElementById("0").style.backgroundColor = "#fbd489";
             document.getElementById("1").style.backgroundColor = "#fbd489";
             document.getElementById("2").style.backgroundColor = "#fbd489";
             start.innerHTML = "RESTART";
+
             return true;
+
         } else if (cells[3] === cells[0] && cells[6] === cells[0]) {
-            // console.log(`${player} wins top to bottom - left`);
+
             gameOn = false;
             document.getElementById("0").style.backgroundColor = "#fbd489";
             document.getElementById("3").style.backgroundColor = "#fbd489";
             document.getElementById("6").style.backgroundColor = "#fbd489";
             start.innerHTML = "RESTART";
+
             return true;
+
         } else if (cells[4] === cells[0] && cells[8] === cells[0]) {
-            // console.log(`${player} wins top-left across`);
+
             gameOn = false;
             document.getElementById("0").style.backgroundColor = "#fbd489";
             document.getElementById("4").style.backgroundColor = "#fbd489";
             document.getElementById("8").style.backgroundColor = "#fbd489";
             start.innerHTML = "RESTART";
+
             return true;
+
         }
     }
-    // bottom right corner, win bottom-top, bottom-left
+
+    // Bottom right corner, win vertical and horizontal bottom
     if (cells[8] === player) {
+
         if (cells[2] === cells[8] && cells[5] === cells[8]) {
-            // console.log(`${player} wins top to bottom right`);
+
             gameOn = false;
             document.getElementById("8").style.backgroundColor = "#fbd489";
             document.getElementById("2").style.backgroundColor = "#fbd489";
             document.getElementById("5").style.backgroundColor = "#fbd489";
             start.innerHTML = "RESTART";
+
             return true;
+
         } else if (cells[6] === cells[8] && cells[7] === cells[8]) {
-            // console.log(`${player} wins bottom diagonal.`);
+
             gameOn = false;
             document.getElementById("8").style.backgroundColor = "#fbd489";
             document.getElementById("6").style.backgroundColor = "#fbd489";
             document.getElementById("7").style.backgroundColor = "#fbd489";
             start.innerHTML = "RESTART";
+
             return true;
+
         }
     }
-    // middle position, win top-bottom, vertical and across right-left
+
+    // Middle position, win vertical, horizontal and diagonal right-left
     if (cells[4] === player) {
+
         if (cells[1] === cells[4] && cells[7] === cells[4]) {
-            // console.log(`${player} wins top to bottom middle`);
+
             gameOn = false;
             document.getElementById("4").style.backgroundColor = "#fbd489";
             document.getElementById("1").style.backgroundColor = "#fbd489";
             document.getElementById("7").style.backgroundColor = "#fbd489";
             start.innerHTML = "RESTART";
+
             return true;
+
         } else if (cells[3] === cells[4] && cells[5] === cells[4]) {
-            // console.log(`${player} wins middle diagonal`);
+
             gameOn = false;
             document.getElementById("4").style.backgroundColor = "#fbd489";
             document.getElementById("3").style.backgroundColor = "#fbd489";
             document.getElementById("5").style.backgroundColor = "#fbd489";
             start.innerHTML = "RESTART";
+
             return true;
+
         } else if (cells[2] === cells[4] && cells[6] === cells[4]) {
-            // console.log(`${player} wins top-right across`);
+
             gameOn = false;
             document.getElementById("4").style.backgroundColor = "#fbd489";
             document.getElementById("2").style.backgroundColor = "#fbd489";
             document.getElementById("6").style.backgroundColor = "#fbd489";
             start.innerHTML = "RESTART";
+
             return true;
+
         }
     }
 }
 
 /** Function checks for a tie condition and returns true/false respectively. */
 function checkTie() {
+
+    let start = document.getElementById("start-button");
+    let endGameCondition = document.getElementById("end-game-condition");
+    let tieSound = document.getElementById("tie-sound");
+    let endTime = document.getElementById("end-time-bell");
+
     checkEmptyCells();
-    // console.log(`Empty cells length inside checkTie() ${emptyCells.length}`);
-    // console.log(`playerWon inside checkTie ${playerWon()}`);
+
     if (emptyCells.length === 0 && playerWon() !== true && gameOn === true) {
+
         endTime.pause();
         tieSound.play();
+
         endGameCondition.innerHTML = "It's a TIE!";
         start.innerHTML = "RESTART";
+
         gameOn = false;
         timeLeft = -1;
+
         return true;
+
     } else {
+
         return false;
+
     }
 }
 
 /** Function returns random player (X or O) */
 function randomPlayerSelection() {
+
     let randomPlayer = Math.floor(Math.random() * players.length);
+
     return players[randomPlayer];
 }
+
 /** Function switches players */
 function switchPlayers() {
+
     if (player === "X") {
         player = "O";
     } else {
@@ -267,71 +330,114 @@ function switchPlayers() {
 
 /** Function checks for empty cells and return an array of their indexes */
 function checkEmptyCells() {
+
     emptyCells = [];
+
     for (let i = 0; i < cells.length; i++) {
         if (cells[i] === null) {
             emptyCells.push(i);
         }
     }
+
     return emptyCells;
 }
 
 /** Function controls computer play */
 function computerPlay() {
-    suffix = ":";
+
+    let endGameCondition = document.getElementById("end-game-condition");
+    let computerScore = document.getElementById("computer-score");
+    let loseLaugh = document.getElementById("lose-laugh");
+    let endTime = document.getElementById("end-time-bell");
+    let fields = document.getElementsByClassName("field");
+    let suffix = ":";
+
+    // Block of code executed only if game is ON
     if (gameOn) {
-        let randomPlay;
-        checkEmptyCells();
-        // console.log(`emptyCells array inside computerPlay ${emptyCells}`);
-        randomPlay = Math.floor(Math.random() * emptyCells.length);
+
+        checkEmptyCells(); // Check for empty cells on the board.
+
+        let randomPlay = Math.floor(Math.random() * emptyCells.length); // Store random number based on a emptyCells array length.
+
+        // Block of code executed when emptyCells has at least one element.
         if (emptyCells.length !== 0) {
-            let computer = fields[emptyCells[randomPlay]];
-            computer.style.color = "red";
+
+            let computer = fields[emptyCells[randomPlay]]; // This is computer move executed by random selection of empty fields on the gameboard.
+
+            computer.style.color = "red"; // Computer marker is always red
+
+            // Fills the gameboard with computer respective marker (X or O) and updates cells array for gamplay logic.
             computer.innerHTML = player;
             cells[emptyCells[randomPlay]] = player;
+
+            // Block of code executed only if playerWon function reurns true value (ends the game with computer win).
             if (playerWon()) {
+
                 timeLeft = -1;
+                endGameCondition.innerHTML = '<span class="player-o">COMPUTER</span> has won!';
+
                 endTime.pause();
                 loseLaugh.play();
-                endGameCondition.innerHTML = '<span class="player-o">COMPUTER</span> has won!';
                 incrementComputerScore();
+
             }
-        } else {
-            checkTie();
         }
     }
 }
 
 /** Function tracks players move across the board */
 function fieldClicked(event) {
-    let id = event.target.id;
+
+    // HTML elements stored as JS variables for better recognition 
+    let endGameCondition = document.getElementById("end-game-condition");
+    let computerTurn = document.getElementById("computer");
+    let playerTurn = document.getElementById("player");
+    let playerScore = document.getElementById("player-score");
+    let markerSound = document.getElementById("marker-sound");
+    let winSound = document.getElementById("win-sound");
+    let endTime = document.getElementById("end-time-bell");
+
+    let id = event.target.id; // Stores id of clicked gameboard field
     let playerMove = true;
-    console.log(id);
-    suffix = ":";
+    let suffix = ":"; // Variable for timer operation
+    // console.log(id);
+
+    // Clears all gamplay messages
     endGameCondition.innerHTML = "";
     playerTurn.innerHTML = "";
     computerTurn.innerHTML = '';
 
     if (gameOn) {
+
+        // Block of code executed only if field clicked id has no value (represented as 'null' in cells array) - validates the player move.
         if (!cells[id]) {
-            cells[id] = player;
-            event.target.style.color = "green";
-            event.target.innerText = player;
-            markerSound.play();
-            timeLeft = 15;
-            playerMove = false;
-            // console.log(`checkTie boolean inside fieldClicked ${checkTie()}`);
-            // console.log(`playerWon inside fieldClicked ${playerWon()}`);
+
+            cells[id] = player; // Marks a player move in the cells array for gameplay logic
+            event.target.style.color = "green"; // Player marker is always green
+            event.target.innerText = player; // Marks a player move on a gameboard
+
+            timeLeft = 15; // Sets a timer to 15 second after valid move (restarts counter)
+            playerMove = false; // Sets playerMove to false after valid move to allow for computerPlay execution
+
+            markerSound.play(); // Every player move is represented with sound effect
+
+            // Block of code executed if player has won and there is no tie.
             if (playerWon() && checkTie() === false) {
-                timeLeft = -1;
-                // console.log(`gameOn inside fieldClicked after checking playerWon and checkTie ${gameOn}`);
+
+                timeLeft = -1; // Sets timer value to execute code block from countdown function to end the game.
+                endGameCondition.innerHTML = '<span class="player-x">PLAYER</span> has won!'; // Updates gameplay message with player winning condition
+
+                // Plays applicable sound effect and pauses other relevant
                 markerSound.pause();
                 endTime.pause();
                 winSound.play();
-                incrementPlayerScore();
-                endGameCondition.innerHTML = '<span class="player-x">PLAYER</span> has won!';
+
+                incrementPlayerScore(); // Every win is counted in the HTML field
+
             }
         }
+
+        // Block of code executed only after player's valid move
         if (playerMove === false) {
             switchPlayers();
             computerPlay();
@@ -341,37 +447,54 @@ function fieldClicked(event) {
 
     }
 }
+
+
 /** Funtion to start timer when user clicks START button */
 function setTimer(event) {
-    start.innerHTML = "START";
+
+    // Variables to control HTML elements.
+    let endGameCondition = document.getElementById("end-game-condition");
+    let computerTurn = document.getElementById("computer");
+    let playerTurn = document.getElementById("player");
+    let mainTheme = document.getElementById("main-theme");
+    let elem = document.getElementById('timer');
+    let start = document.getElementById("start-button");
+    let fields = document.getElementsByClassName("field");
+
+    // Variables to control functions/iterations.
+    let random = Math.floor(Math.random() * 2);
+    let timerId = setInterval(countdown, 1000);
+    let computer;
+
     gameOn = true;
     player = randomPlayerSelection();
-    let computer;
+    timeLeft = 14;
+
+    // Selection of markers for player and computer respectively.
     if (player === 'X') {
         computer = 'O';
     } else {
         computer = 'X';
     }
 
+    // Update gameplay messages and Start button.
     playerTurn.innerHTML = `Player: <span class="player-x">${player}</span>`;
     computerTurn.innerHTML = `Computer: <span class="player-o">${computer}</span>`;
-    let timerId = setInterval(countdown, 1000);
-
     endGameCondition.innerHTML = "";
+    start.innerHTML = "START";
+
+    // Iteration through gameboard fields to reset the gameboard
     for (let field of fields) {
         field.innerHTML = null;
         field.style.backgroundColor = "transparent";
     }
 
-    timeLeft = 14;
+    // If statement to let user play muted if selected in previous turn and willing to continue the game.
     if (musicMute !== true) {
         playMe(mainTheme);
     }
-    start.removeEventListener("click", setTimer);
 
-    let random = Math.floor(Math.random() * 2);
-    console.log(random);
-
+    // If/else statement to control who plays first (random selection between 0 and 1 - 'coin-flip').
     if (random === 0) {
         endGameCondition.innerHTML = '<span class="player-o">COMPUTER</span> plays first.';
         switchPlayers();
@@ -381,52 +504,92 @@ function setTimer(event) {
         endGameCondition.innerHTML = '<span class="player-x">PLAYER</span> plays first';
     }
 
+    // After game has started, the start button is blocked.
+    start.removeEventListener("click", setTimer);
+
     /** Function starts countdown and executes different code for specific remaining times */
     function countdown() {
+
+        // Variables to control HTML elements
+        let endGameCondition = document.getElementById("end-game-condition");
+        let computerTurn = document.getElementById("computer");
+        let playerTurn = document.getElementById("player");
+        let endTime = document.getElementById("end-time-bell");
+        let mainTheme = document.getElementById("main-theme");
+
+        // Suffix to control dispaly of timer
+        let suffix = ":";
+
+        // Various blocks of code executed if time has passed (or timer reset by different function) 
         if (timeLeft === -1) {
+
+            // Block of code executed only if game is still ON (player did not make a valid move on time)
             if (gameOn) {
+
                 endTime.play();
-                endGameCondition.innerHTML = `End of time. <span class="player-o">COMPUTER</span> move.`;
                 timeLeft = 15;
+                endGameCondition.innerHTML = `End of time. <span class="player-o">COMPUTER</span> move.`;
+
                 switchPlayers();
                 computerPlay();
                 switchPlayers();
+
             } else {
-                clearTimeout(timerId);
-                // alert("End of game");
+
+                // Block of code executed if any player has won or there was a tie.
                 gameOn = false;
+
+                clearTimeout(timerId);
+                timeLeft = 15;
+
                 document.getElementById("start-button").addEventListener("click", setTimer);
+                document.getElementById("timer").innerHTML = "00:" + timeLeft + " sec";
+                playerTurn.innerHTML = "";
+                computerTurn.innerHTML = '';
+
+                mainTheme.pause();
+                mainTheme.currentTime = 0;
+
                 for (let i = 0; i < cells.length; i++) {
                     cells[i] = null;
                 }
-                timeLeft = 15;
-                document.getElementById("timer").innerHTML = "00:" + timeLeft + " sec";
-                mainTheme.pause();
-                mainTheme.currentTime = 0;
-                playerTurn.innerHTML = "";
-                computerTurn.innerHTML = '';
+
             }
+
         } else {
+            
+            // Block of code to control timer display - if time < 10, the suffix is updated to show figures correctly and gameplay messages dissapears from the screen
             if (timeLeft < 10) {
+
                 suffix = ":0";
                 playerTurn.innerHTML = "";
                 computerTurn.innerHTML = '';
                 endGameCondition.innerHTML = "";
+
             }
-            elem.innerHTML = "00" + suffix + timeLeft + ' sec';
-            timeLeft--;
+
+            elem.innerHTML = "00" + suffix + timeLeft + ' sec'; // If timer has not reached figure <10, suffix is updated accordigly and 
+            timeLeft--; // Substracts seconds from timer
         }
     }
 }
 
 /** Function to increment player score - based on Code Institute "Love Maths" project. */
 function incrementPlayerScore() {
+    
+    let playerScore = document.getElementById("player-score");
     let oldScore = parseInt(playerScore.innerText);
+    
     playerScore.innerText = ++oldScore;
+
 }
 
 /** Function to increment computer score - based on Code Institute "Love Maths" project. */
 function incrementComputerScore() {
+    
+    let computerScore = document.getElementById("computer-score");
     let oldScore = parseInt(computerScore.innerText);
+
     computerScore.innerText = ++oldScore;
+    
 }
