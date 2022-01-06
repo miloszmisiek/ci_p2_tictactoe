@@ -34,13 +34,17 @@ body {
     flex-direction: column;
 } */
 
+
+#position-wrapper {
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .game-wrapper {
     background: url(../images/background-board.png);
     background-size: cover;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     padding: 65px;
     z-index: 0;
     width: 800px;
@@ -51,6 +55,13 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border: 2px solid red;
+    margin: auto;
+    position: relative;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  */
 }
 
 /* HEADING */
@@ -60,7 +71,7 @@ body {
     align-items: center;
     /* height: 12vh; */
     margin-top: 20px;
-    /* border: 1px solid blue; */
+    border: 1px solid green;
 }
 
 h1 {
@@ -168,6 +179,7 @@ hr {
     height: 50px;
     font-size: 30px;
     margin-right: 40px;
+    border: 2px solid purple;
 }
 
 .player-turn {
@@ -182,6 +194,7 @@ hr {
     align-items: center;
     margin-right: 20px;
     margin-top: 20px;
+    border: 2px solid bisque;
 }
 
 .game-control {
@@ -204,7 +217,7 @@ hr {
     align-items: center;
     flex-direction: column;
     /* elements on top of each other */
-
+    border: 2px solid brown;
 }
 
 #board {
@@ -232,6 +245,7 @@ hr {
     justify-content: center;
     align-items: center;
     margin-right: 40px;
+    border: 2px solid gray;
 }
 
 #button-wrapper button {
@@ -272,6 +286,7 @@ hr {
     justify-content: center;
     align-items: center;
     margin-right: 40px;
+    border: 2px solid red;
 }
 
 .players {
@@ -349,6 +364,10 @@ hr {
 
 @media screen and (max-width: 570px) {
 
+
+    #position-wrapper {
+        height: 100vh;
+    }
     h1 {
         font-size: 28px;
         padding-top: 15px;
