@@ -256,11 +256,12 @@ h1 {
 
 /* RESPONSIVNESS */
 
-@media screen and (max-height: 850px) and (max-width: 420px) {
+/* @media screen and (max-height: 850px) and (max-width: 420px) {
 
     .game-wrapper {
         padding: 0;
     }
+
 }
 
 @media screen and (max-width: 700px) {
@@ -269,25 +270,37 @@ h1 {
         font-size: 48px;
     }
 
-    /* .game-wrapper {
-        background: white;
-    } */
-
     #heading-wrapper {
         margin-top: 20px;
     }
 
 
-}
+} */
 
 @media screen and (max-height: 1100px) {
-    .game-wrapper {
-        padding: px;
+    .player-info {
+        height: 35px;
+    }
+
+    #button-wrapper button {
+        margin: 20px 40px 0;
+    }
+
+    .board-container {
+        margin: 20px 40px 20px 0;
+    }
+
+    #game-controls {
+        margin-top: 0;
+    }
+
+    #heading-wrapper {
+        margin-top: 0;
     }
 }
 
 @media screen and (max-width: 480px),
-screen and (max-height: 600px) {
+screen and (max-height: 850px) {
 
     h1 {
         font-size: 24px;
@@ -371,5 +384,25 @@ screen and (max-height: 600px) {
         margin: 10px 25px 0;
         font-size: 20px;
         padding: 5px 20px;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-height: 1000px) {
+    .game-wrapper {
+        max-width: 33%;
+    }
+
+    #heading-wrapper {
+        margin-top: 45px;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-height: 750px) {
+    .game-wrapper {
+        max-width: 68%;
+    }
+
+    #heading-wrapper {
+        margin-top: 45px;
     }
 }
