@@ -71,15 +71,15 @@ h1 {
 hr {
     border-top: 1px solid var(--gray);
     margin-bottom: 5px;
-    width: 90%;
+    width: 80%;
     max-width: 600px;
-    margin: auto;
+    margin-right: 30px;
 }
 
 #help-button {
     cursor: pointer;
     margin-bottom: 5px;
-    margin-left: 10px;
+    margin-left: 25px;
     color: var(--gray);
     font-family: 'Patrick Hand', sans-serif;
     width: 50px;
@@ -185,7 +185,7 @@ hr {
 }
 
 .game-control {
-    margin: 0 10px;
+    margin: 0 25px;
     font-size: 30px;
     color: var(--gray);
 }
@@ -354,12 +354,17 @@ hr {
         padding-top: 15px;
     }
 
+    hr {
+        margin-right: 0;
+    }
+
     .game-wrapper {
         padding: 5px;
     }
 
     .game-control {
         font-size: 20px;
+        margin: 0 10px;
     }
 
     .player-info {
@@ -390,6 +395,9 @@ hr {
 
     #button-wrapper button {
         line-height: 30px;
+        font-size: 18px;
+        padding: 0px 15px;
+        margin: 10px 20px 0;
     }
 
     .score-area {
