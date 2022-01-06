@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Patrick+Hand&display=swap');
 
 :root {
-    --gray: #636e72;
+    --gray: #422800;
     /* using css variables for repetive use of same color with calling name instead of hex value*/
 }
 
@@ -47,6 +47,10 @@ body {
     max-width: 90%;
     height: 1100px;
     max-height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 /* HEADING */
@@ -62,19 +66,29 @@ body {
 h1 {
     font-family: 'Cabin Sketch', sans-serif;
     font-size: 54px;
-    padding-top: 30px;
+}
+
+hr {
+    border-top: 1px solid var(--gray);
+    margin-bottom: 5px;
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
 }
 
 #help-button {
     cursor: pointer;
-    margin-bottom: 45px;
+    margin-bottom: 5px;
     margin-left: 10px;
     color: var(--gray);
     font-family: 'Patrick Hand', sans-serif;
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    font-size: 25px;
+    font-size: 30px;
+    background-color: transparent;
+    border: 2px solid #422800;
+    font-weight: 600;
 }
 
 /* Modal popup styling come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw */
@@ -208,7 +222,7 @@ h1 {
     justify-content: center;
     align-items: center;
     color: var(--gray);
-    font-size: 70px;
+    font-size: 120px;
     /* border: 1px solid red; */
 }
 
@@ -221,13 +235,33 @@ h1 {
 }
 
 #button-wrapper button {
-    cursor: pointer;
     margin: 30px 40px 0;
-    color: var(--gray);
     font-family: 'Patrick Hand', sans-serif;
-    font-size: 25px;
-    padding: 10px 30px;
-    border-radius: 18%;
+    background-color: #fbeee0;
+    border: 2px solid #422800;
+    border-radius: 30px;
+    box-shadow: #422800 4px 4px 0 0;
+    color: #422800;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 26px;
+    padding: 0 30px;
+    line-height: 60px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+#button-wrapper button:hover {
+    background-color: #fff;
+}
+
+#button-wrapper button:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
 }
 
 /* SCORES AREA */
@@ -254,155 +288,133 @@ h1 {
     font-weight: bold;
 }
 
-/* RESPONSIVNESS */
+/* screen and (max-height: 1100px) */
 
-/* @media screen and (max-height: 850px) and (max-width: 420px) {
+/* .game-wrapper {
+        max-height: 80%;
+    } */
 
-    .game-wrapper {
-        padding: 0;
-    }
-
-}
-
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 680px) {
 
     h1 {
-        font-size: 48px;
+        font-size: 42px;
     }
 
-    #heading-wrapper {
-        margin-top: 20px;
+    .game-control {
+        font-size: 28px;
     }
 
+    #game-controls {
+        margin-top: 10px;
+    }
 
-} */
-
-@media screen and (max-height: 1100px) {
     .player-info {
         height: 35px;
     }
 
-    #button-wrapper button {
-        margin: 20px 40px 0;
-    }
-
     .board-container {
-        margin: 20px 40px 20px 0;
+        margin: 15px;
     }
 
-    #game-controls {
-        margin-top: 0;
-    }
-
-    #heading-wrapper {
-        margin-top: 0;
-    }
-}
-
-@media screen and (max-width: 480px),
-screen and (max-height: 970px) {
-
-    h1 {
-        font-size: 24px;
-    }
-
-    #heading-wrapper {
-        margin-top: 25px;
-        margin-left: 25px;
-    }
-
-    #help-button {
-        margin-bottom: 0;
-        width: 25px;
-        height: 25px;
-        font-size: 18px;
-    }
-
-    .game-wrapper {
-        max-width: 97%;
-        max-height: 95%;
-        padding: 0;
-        height: 600px;
-    }
-
-    #game-controls {
-        margin-right: 0;
-        margin-top: 0;
-        font-size: 20px;
-    }
-
-    .player-info {
-        height: 25px;
-        margin-right: 0;
+    .players {
+        padding: 15px 15px;
     }
 
     .player-turn {
-        margin-right: 0;
-        margin-top: 0;
-        font-size: 20px;
+        padding: 10px 20px;
+    }
+
+    .score-area {
+        font-size: 1.4rem;
+        margin-right: 10px;
+    }
+
+    #button-wrapper {
+        margin-right: 10px;
+    }
+
+    #button-wrapper button {
+        margin: 20px 30px 0;
+    }
+
+    /* #board {
+        width: 300px;
+    }
+
+    .field {
+        height: 100px;
+        width: 100px;
+    } */
+}
+
+@media screen and (max-width: 570px) {
+
+    h1 {
+        font-size: 28px;
+        padding-top: 15px;
+    }
+
+    .game-wrapper {
+        padding: 5px;
     }
 
     .game-control {
         font-size: 20px;
     }
 
-    .board-container {
-        margin: 10px 30px;
+    .player-info {
+        font-size: 18px;
+        height: 25px;
+        margin-right: 0;
+    }
+
+    #game-controls {
+        margin-top: 0;
     }
 
     #board {
         width: 240px;
     }
 
-    .modal-body {
-        font-size: 0.9rem;
+    .field {
+        width: 80px;
+        height: 80px;
     }
 
-    .field {
-        height: 80px;
-        width: 80px;
+    #help-button {
+        margin-bottom: 5px;
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+
+    #button-wrapper button {
+        line-height: 30px;
     }
 
     .score-area {
         font-size: 1.1rem;
-        margin-right: 0;
+        margin-right: 0px;
     }
 
     .players {
-        padding: 10px 20px;
+        padding: 10px 15px;
     }
 
-    .player-info p {
-        font-size: 18px;
+    .board-container {
+        margin: 10px;
     }
 
-    #button-wrapper {
-        margin-right: 0;
-    }
+}
 
-    #button-wrapper button {
-        margin: 10px 25px 0;
-        font-size: 20px;
-        padding: 5px 20px;
+@media screen and (max-height: 830px) {
+    .game-wrapper {
+        max-height: 80%;
     }
 }
 
-@media screen and (min-width: 700px) and (max-height: 1000px) {
+@media screen and (max-height: 600px) {
     .game-wrapper {
-        max-width: 33%;
-    }
-
-    #heading-wrapper {
-        margin-top: 45px;
-    }
-}
-
-@media screen and (min-width: 500px) and (max-height: 750px) {
-    .game-wrapper {
-        max-width: 68%;
-    }
-
-    #heading-wrapper {
-        margin-top: 45px;
+        max-height: 95%;
     }
 }

@@ -42,13 +42,14 @@
     <div class="game-wrapper">
         <div id="heading-wrapper">
             <h1 id="game-name">TIC TAC TOE</h1>
-            <!-- data-modal-target is a selector for JS that points out to element to be open with button -->
-            <button data-modal-target="#modal" id="help-button">?</button>
-            <!-- Modal popup widnow come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw -->
         </div>
+        <hr>
         <div id="game-controls">
             <p class="game-control" id="timer">00:15 sec</p>
             <button class="game-control" id="volume"><i class="fas fa-volume-up"></i></button>
+            <!-- data-modal-target is a selector for JS that points out to element to be open with button -->
+            <button data-modal-target="#modal" class="game-control" id="help-button">?</button>
+            <!-- Modal popup widnow come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw -->
             <audio loop id="main-theme" src="assets/audio/clock-ticking.wav"></audio>
         </div>
         <div class="player-info">
