@@ -35,7 +35,7 @@ body {
 }
 
 .game-wrapper {
-    background: url(../images/background-board.png);
+    background: url(../images/background-board.webp);
     background-size: cover;
 
     display: flex;
