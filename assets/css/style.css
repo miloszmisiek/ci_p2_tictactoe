@@ -84,6 +84,11 @@ hr {
     font-weight: 600;
 }
 
+#help-button:hover {
+    color: orange;
+    border: 2px solid orange;
+}
+
 /* Modal popup styling come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw */
 .modal {
     position: absolute;
@@ -105,6 +110,9 @@ hr {
     transform: translate(-50%, -50%) scale(1);
     /* sets modal to be visible when active */
     z-index: 10;
+    text-align: justify;
+    max-height: 90%;
+    font-size: 1.4rem;
 }
 
 .modal-header {
@@ -116,7 +124,7 @@ hr {
 }
 
 .modal-header .title {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: bold;
 }
 
@@ -189,6 +197,10 @@ hr {
     cursor: pointer;
     padding: 10px;
     background: none;
+}
+
+#volume:hover {
+    color: orange;
 }
 
 /* GAMEBOARD SECTION */
@@ -360,6 +372,15 @@ hr {
         margin-right: 0;
     }
 
+    .modal.active {
+        font-size: 0.9rem;
+        overflow: scroll;
+    }
+
+    .modal-header .title {
+        font-size: 0.9rem;
+    }
+
     #game-controls {
         margin-top: 0;
     }
@@ -404,7 +425,7 @@ hr {
 }
 
 @media screen and (min-height: 650px) {
-    .game-wrapper{
+    .game-wrapper {
         max-height: 80%;
     }
 }
