@@ -624,7 +624,7 @@ hr {
         margin-top: 20px
     }
 
-    #game-wrapper {
+    .game-wrapper {
         max-height: 70%;
     }
 }
