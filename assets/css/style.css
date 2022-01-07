@@ -6,7 +6,8 @@
 :root {
     --main-color: #422800;
 }
- /* Sets default sizing of the web browser window */
+
+/* Sets default sizing of the web browser window */
 * {
     margin: 0;
     padding: 0;
@@ -28,7 +29,7 @@ body {
 
 #position-wrapper {
     /* border: 2px solid blue; */
-    
+
     /* Modern vertical and horizontal centering with flexbox */
     display: flex;
     justify-content: center;
@@ -38,23 +39,23 @@ body {
 .game-wrapper {
     background: url(../images/background-board.png);
     background-size: cover;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
     /* Elements stocked one on another in column form (default flex is row direction) */
     flex-direction: column;
-    
+
     height: 1100px;
     width: 800px;
 
     max-height: 95%;
     max-width: 90%;
-    
+
     margin: auto;
     padding: 65px;
     z-index: 0;
-    
+
     /* border: 2px solid red; */
 }
 
@@ -107,13 +108,13 @@ hr {
     position: absolute;
     top: 50%;
     left: 50%;
-    
+
     /* scale(0) sets modal to invisible */
     transform: translate(-50%, -50%) scale(0);
-    
+
     /* Gradually apears/disapears over set time frame */
     transition: 200ms ease-in-out;
-    
+
     /* Border: 1px solid black; */
     border-radius: 10px;
     z-index: 15;
@@ -166,7 +167,7 @@ hr {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, .5);
-    
+
     /* If overlay is invisible, it will remove the option to capture any click events */
     pointer-events: none;
 }
@@ -469,4 +470,86 @@ hr {
         max-height: 95%;
     }
 
+}
+
+@media screen and (min-width: 1000px) and (max-height: 1000px) {
+
+    #position-wrapper {
+        height: 100vh;
+    }
+
+    h1 {
+        font-size: 28px;
+        padding-top: 15px;
+    }
+
+    hr {
+        margin-right: 0;
+    }
+
+    .game-wrapper {
+        padding: 5px;
+        max-width: 40%;
+    }
+
+    .game-control {
+        font-size: 20px;
+        margin: 0 10px;
+    }
+
+    .player-info {
+        font-size: 18px;
+        height: 25px;
+        margin-right: 0;
+    }
+
+    .modal.active {
+        font-size: 0.9rem;
+        overflow: scroll;
+    }
+
+    .modal-header .title {
+        font-size: 0.9rem;
+    }
+
+    #game-controls {
+        margin-top: 0;
+    }
+
+    #board {
+        width: 240px;
+    }
+
+    .field {
+        width: 80px;
+        height: 80px;
+        font-size: 60px;
+    }
+
+    #help-button {
+        margin-bottom: 5px;
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+
+    #button-wrapper button {
+        line-height: 30px;
+        font-size: 18px;
+        padding: 0px 15px;
+        margin: 10px 20px 0;
+    }
+
+    .score-area {
+        font-size: 1.1rem;
+        margin-right: 0px;
+    }
+
+    .players {
+        padding: 10px 15px;
+    }
+
+    .board-container {
+        margin: 10px;
+    }
 }
