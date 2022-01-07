@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // SOUNDS
 
-// Mutes a singular HTML5 element (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+/** Mutes a singular HTML5 element (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js) */
 function muteMe(elem) {
 
     musicMute = true;
@@ -136,7 +136,7 @@ function muteMe(elem) {
     elem.pause();
 }
 
-// Unmutes a singular HTML5 element and plays only mainTheme element (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+/** Unmutes a singular HTML5 element and plays only mainTheme element (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js) */
 function playMe(elem) {
 
     let mainTheme = document.getElementById("main-theme");
@@ -147,7 +147,7 @@ function playMe(elem) {
     mainTheme.play();
 }
 
-// Mutes all video and audio elements on the page and changes volume button icon (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+/** Mutes all video and audio elements on the page and changes volume button icon (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js) */
 function mutePage() {
 
     let volume = document.getElementById("volume");
@@ -160,7 +160,7 @@ function mutePage() {
     volume.innerHTML = '<i class="fas fa-volume-mute"></i>';
 }
 
-// Unutes all video and audio elements on the page, plays mainTheme and changes volume button icon  (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js)
+/** Umutes all video and audio elements on the page, plays mainTheme and changes volume button icon  (come from https://stackoverflow.com/questions/14044761/how-to-mute-all-sound-in-a-page-with-js) */
 function unMutePage() {
 
     let volume = document.getElementById("volume");
@@ -395,7 +395,6 @@ function fieldClicked(event) {
 
     let id = event.target.id; // Stores id of clicked gameboard field
     let playerMove = true;
-    // console.log(id);
 
     // Clears all gamplay messages
     endGameCondition.innerHTML = "";
