@@ -1,11 +1,12 @@
 /* Large portion of code is adopted from YouTube Tutorial by James Q Quick https://www.youtube.com/watch?v=E621N5GBKv8 */
+
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Patrick+Hand&display=swap');
 
+/* Using css variables for repetive use of same color with calling name instead of hex value*/
 :root {
     --main-color: #422800;
-    /* using css variables for repetive use of same color with calling name instead of hex value*/
 }
-
+ /* Sets default sizing of the web browser window */
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +15,7 @@
     /* width and heigth for elements will include border and padding */
 }
 
+/* Body elemnent basic styling */
 body {
     color: var(--main-color);
     font-family: 'Patrick Hand', sans-serif;
@@ -22,8 +24,12 @@ body {
 }
 
 
+/* OUTER WRAPPERS */
+
 #position-wrapper {
     /* border: 2px solid blue; */
+    
+    /* Modern vertical and horizontal centering with flexbox */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,19 +38,24 @@ body {
 .game-wrapper {
     background: url(../images/background-board.png);
     background-size: cover;
-    padding: 65px;
-    z-index: 0;
-    width: 800px;
-    max-width: 90%;
-    height: 1100px;
-    max-height: 95%;
+    
     display: flex;
     justify-content: center;
     align-items: center;
+    /* Elements stocked one on another in column form (default flex is row direction) */
     flex-direction: column;
-    /* border: 2px solid red; */
+    
+    height: 1100px;
+    width: 800px;
+
+    max-height: 95%;
+    max-width: 90%;
+    
     margin: auto;
-    position: relative;
+    padding: 65px;
+    z-index: 0;
+    
+    /* border: 2px solid red; */
 }
 
 /* HEADING */
@@ -89,16 +100,21 @@ hr {
     border: 2px solid orange;
 }
 
+/* INSTRUCTIONS POP-UP */
+
 /* Modal popup styling come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw */
 .modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0);
+    
     /* scale(0) sets modal to invisible */
+    transform: translate(-50%, -50%) scale(0);
+    
+    /* Gradually apears/disapears over set time frame */
     transition: 200ms ease-in-out;
-    /* gradually apears/disapears over set time frame */
-    /* border: 1px solid black; */
+    
+    /* Border: 1px solid black; */
     border-radius: 10px;
     z-index: 15;
     background-color: white;
@@ -108,7 +124,7 @@ hr {
 
 .modal.active {
     transform: translate(-50%, -50%) scale(1);
-    /* sets modal to be visible when active */
+    /* Sets modal to be visible when active */
     z-index: 10;
     text-align: justify;
     max-height: 90%;
@@ -150,8 +166,9 @@ hr {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, .5);
+    
+    /* If overlay is invisible, it will remove the option to capture any click events */
     pointer-events: none;
-    /* if overlay is invisible, it will remove the option to capture any click events */
 }
 
 /* When overlay is active, we set opacity to be visible and pointer-events to capture events to disallow for button clicks */
@@ -161,7 +178,8 @@ hr {
     z-index: 1;
 }
 
-/* PLAYER INFORMATION */
+/* PLAYER INFORMATIONS */
+
 .player-info {
     display: flex;
     justify-content: center;
@@ -177,7 +195,8 @@ hr {
 }
 
 
-/* GAME CONTROLS SECTION */
+/* GAME-CONTROLS SECTION */
+
 #game-controls {
     display: flex;
     justify-content: center;
@@ -204,6 +223,7 @@ hr {
 }
 
 /* GAMEBOARD SECTION */
+
 .board-container {
     margin: 30px 40px 30px 0px;
     display: flex;
@@ -233,6 +253,7 @@ hr {
 }
 
 /* START/RESET BUTTONS */
+
 #button-wrapper {
     display: flex;
     justify-content: center;
@@ -241,6 +262,7 @@ hr {
     /* border: 2px solid gray; */
 }
 
+/* Buttons styling come from - https://getcssscan.com/css-buttons-examples */
 #button-wrapper button {
     margin: 30px 40px 0;
     font-family: 'Patrick Hand', sans-serif;
@@ -272,6 +294,7 @@ hr {
 }
 
 /* SCORES AREA */
+
 /* All 'score' elements copied and modified from Code Institute 'Love Maths' project */
 .score-area {
     font-size: 1.6rem;
@@ -296,7 +319,10 @@ hr {
     font-weight: bold;
 }
 
+/* RESPONSIVENESS */
 
+
+/* Tablets and medium-size screens */
 @media screen and (max-width: 680px) {
 
     h1 {
@@ -341,6 +367,7 @@ hr {
     }
 }
 
+/* Smartphones and small-size screens */
 @media screen and (max-width: 570px) {
 
 
@@ -424,16 +451,22 @@ hr {
 
 }
 
+/* Adjust the game-wrapper for certain models of smatphones */
 @media screen and (min-height: 650px) {
     .game-wrapper {
         max-height: 80%;
     }
 }
 
-@media screen and (min-height: 1100px) {
+/* Desktop screens */
+@media screen and (min-height: 1000px) {
 
     #position-wrapper {
         height: 100vh;
+    }
+
+    .game-wrapper {
+        max-height: 95%;
     }
 
 }

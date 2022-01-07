@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A simple browser Tic Tac Toe game for short break entertainment">
     <meta name="keywords" content="tictactoe, game, javascript game, entertainment, break">
+    <!-- Link to CSS file -->
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Tic Tac Toe</title>
 </head>
 
 <body>
+    <!-- Overlay for Modal Operation -->
     <div id="overlay"></div>
+    <!-- Modal Pop-up Window (Game Instructions) -->
     <div class="modal" id="modal">
         <div class="modal-header">
             <div class="title">Instructions</div>
@@ -39,15 +42,18 @@
                 - Below START and RESET buttons there is counter for your and computer wins.
 
             </p>
-
         </div>
     </div>
+    <!-- Outer Wrapper -->
     <div id="position-wrapper">
+        <!-- Game Area Wrapper -->
         <div class="game-wrapper">
+            <!-- Main Heading - Game Title -->
             <div id="heading-wrapper">
                 <h1 id="game-name">TIC TAC TOE</h1>
             </div>
             <hr>
+            <!-- Game Controls Section -->
             <div id="game-controls">
                 <p class="game-control" id="timer">00:15 sec</p>
                 <button class="game-control" id="volume"><i class="fas fa-volume-up"></i></button>
@@ -56,11 +62,12 @@
                 <!-- Modal popup widnow come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw -->
                 <audio loop id="main-theme" src="assets/audio/clock-ticking.wav"></audio>
             </div>
+            <!-- Gameplay Information - Top -->
             <div class="player-info">
                 <p class="player-turn" id="player"></p>
                 <p class="player-turn" id="computer"></p>
             </div>
-            <audio id="marker-sound" src="assets/audio/punch.wav"></audio>
+            <!-- Gameboard -->
             <div class="board-container">
                 <div id="board">
                     <div class="field" id="0"></div>
@@ -74,19 +81,21 @@
                     <div class="field" id="8"></div>
                 </div>
             </div>
+            <!-- Gameplay Infromation - Bottom -->
             <div class="player-info">
-                <p id="end-game-condition">
-                </p>
+                <p id="end-game-condition"></p>
+                <!-- Audio Elements for Gameplay Events -->
+                <audio id="marker-sound" src="assets/audio/punch.wav"></audio>
                 <audio id="lose-laugh" src="assets/audio/lose_laugh.mp3"></audio>
                 <audio id="win-sound" src="assets/audio/win_sound.mp3"></audio>
                 <audio id="tie-sound" src="assets/audio/tie-sound.mp3"></audio>
                 <audio id="end-time-bell" src="assets/audio/end-time-bell.wav"></audio>
             </div>
+            <!-- START/RESET Buttons -->
             <div id="button-wrapper">
                 <button id="start-button">START</button>
                 <button id="reset-button">RESET</button>
             </div>
-
             <!-- Score Area copied from Code Institute 'Love Maths' Project -->
             <div class="score-area">
                 <p class="players">Player score <span id="player-score" class="player-x">0</span></p>

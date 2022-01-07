@@ -4,7 +4,7 @@ Hello Stranger,
 
 This web browser based **Tic Tac Toe** game is a simple solution for users who want to entertain themselves a bit while taking a break from work.
 
-You can start the game *here*.
+You can start the game [*here*](https://miloszmisiek.github.io/ci_p2_tictactoe/).
 
 # Contents
 
