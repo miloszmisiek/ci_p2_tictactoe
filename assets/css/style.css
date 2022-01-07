@@ -64,7 +64,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    /* margin-top: 85px; */
     /* border: 1px solid green; */
 }
 
@@ -226,7 +226,7 @@ hr {
 /* GAMEBOARD SECTION */
 
 .board-container {
-    margin: 30px 40px 30px 0px;
+    margin: 20px 40px 20px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -265,7 +265,7 @@ hr {
 
 /* Buttons styling come from - https://getcssscan.com/css-buttons-examples */
 #button-wrapper button {
-    margin: 30px 40px 0;
+    margin: 30px 20px 0;
     font-family: 'Patrick Hand', sans-serif;
     background-color: #fbeee0;
     /* border: 2px solid #422800; */
@@ -330,6 +330,10 @@ hr {
         font-size: 42px;
     }
 
+    #heading-wrapper {
+        margin-top: 20px;
+    }
+
     .game-control {
         font-size: 28px;
     }
@@ -374,6 +378,10 @@ hr {
 
     #position-wrapper {
         height: 100vh;
+    }
+
+    #heading-wrapper {
+        margin-top: 20px;
     }
 
     h1 {
@@ -457,10 +465,14 @@ hr {
     .game-wrapper {
         max-height: 80%;
     }
+
+    #heading-wrapper {
+        margin-top: 20px;
+    }
 }
 
 /* Desktop screens */
-@media screen and (min-height: 1000px) {
+@media screen and (min-height: 890px) {
 
     #position-wrapper {
         height: 100vh;
@@ -470,9 +482,13 @@ hr {
         max-height: 95%;
     }
 
+    #heading-wrapper {
+        margin-top: 85px;
+    }
+
 }
 
-@media screen and (max-height: 1000px) and (min-width: 1000px) {
+@media screen and (max-height: 890px) and (min-width: 1000px) {
 
     #position-wrapper {
         height: 100vh;
@@ -481,6 +497,10 @@ hr {
     h1 {
         font-size: 28px;
         padding-top: 15px;
+    }
+
+    #heading-wrapper {
+        margin-top: 20px;
     }
 
     hr {
