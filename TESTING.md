@@ -14,7 +14,7 @@ Source codes was tested using HTML, CSS and JavaScript validators. No error was 
 
 - JSHint is a community-driven tool that detects errors and potential problems in JavaScript code. 
 - To validate the [script.js](assets/js/script.js) file, free JSHint validator was used for this project. Below the results:
-  - 79 warnings present, all related to modern JavaScript code: "(...)is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz)." All warnings dissapeard after adding one line of comment on top of [script.js](assets/js/script.js) file: "/*jshint esversion: 6 */" <br>
+  - 79 warnings were present at first, all related to modern JavaScript code: "(...)is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz)." All warnings dissapeard after adding one line of comment on top of [script.js](assets/js/script.js) file: "/*jshint esversion: 6 */" <br>
     ![JSHint Warnings Example](assets/images/testing/jshint-warnings.png)
 
 ## Responsiveness
