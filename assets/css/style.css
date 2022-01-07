@@ -259,7 +259,7 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 15px;
+    margin-right: 40px;
     /* border: 2px solid gray; */
 }
 
@@ -555,6 +555,10 @@ hr {
         font-size: 20px;
     }
 
+    #button-wrapper {
+        margin-right: 25px;
+    }
+
     #button-wrapper button {
         line-height: 30px;
         font-size: 18px;
@@ -564,7 +568,7 @@ hr {
 
     .score-area {
         font-size: 1.1rem;
-        margin-right: 0px;
+        margin-right: 15px;
     }
 
     .players {
