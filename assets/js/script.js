@@ -88,14 +88,14 @@ document.getElementById('overlay').addEventListener('click', () => {
 function openModal(modal) {
     if (modal === null) return;
     modal.classList.add('active');
-    overlay.classList.add('active');
+    document.getElementById('overlay').classList.add('active');
 }
 
 /** Function removes class '.active' to modal argument to control the popup window operation, or returns nothing if modal element is null - come from https://www.youtube.com/watch?v=MBaw_6cPmAw */
 function closeModal(modal) {
     if (modal === null) return;
     modal.classList.remove('active');
-    overlay.classList.remove('active');
+    document.getElementById('overlay').classList.remove('active');
 }
 
 // Event listener to execute gamboard creation after DOM finish loading. 
