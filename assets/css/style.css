@@ -28,8 +28,6 @@ body {
 /* OUTER WRAPPERS */
 
 #position-wrapper {
-    /* border: 2px solid blue; */
-
     /* Modern vertical and horizontal centering with flexbox */
     display: flex;
     justify-content: center;
@@ -55,17 +53,14 @@ body {
     margin: auto;
     padding: 65px;
     z-index: 0;
-
-    /* border: 2px solid red; */
 }
 
 /* HEADING */
+
 #heading-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-top: 85px; */
-    /* border: 1px solid green; */
 }
 
 h1 {
@@ -115,7 +110,6 @@ hr {
     /* Gradually apears/disapears over set time frame */
     transition: 200ms ease-in-out;
 
-    /* Border: 1px solid black; */
     border-radius: 10px;
     z-index: 15;
     background-color: white;
@@ -188,13 +182,11 @@ hr {
     height: 50px;
     font-size: 30px;
     margin-right: 40px;
-    /* border: 2px solid purple; */
 }
 
 .player-turn {
     padding: 0 30px;
 }
-
 
 /* GAME-CONTROLS SECTION */
 
@@ -204,7 +196,6 @@ hr {
     align-items: center;
     margin-right: 20px;
     margin-top: 20px;
-    /* border: 2px solid bisque; */
 }
 
 .game-control {
@@ -232,7 +223,6 @@ hr {
     align-items: center;
     flex-direction: column;
     /* elements on top of each other */
-    /* border: 2px solid brown; */
 }
 
 #board {
@@ -260,7 +250,6 @@ hr {
     justify-content: center;
     align-items: center;
     margin-right: 40px;
-    /* border: 2px solid gray; */
 }
 
 /* Buttons styling come from - https://getcssscan.com/css-buttons-examples */
@@ -268,7 +257,6 @@ hr {
     margin: 30px 20px 0;
     font-family: 'Patrick Hand', sans-serif;
     background-color: #fbeee0;
-    /* border: 2px solid #422800; */
     border-radius: 30px;
     box-shadow: #422800 4px 4px 0 0;
     color: #422800;
@@ -303,7 +291,6 @@ hr {
     justify-content: center;
     align-items: center;
     margin-right: 40px;
-    /* border: 2px solid red; */
 }
 
 .players {
@@ -321,7 +308,6 @@ hr {
 }
 
 /* RESPONSIVENESS */
-
 
 /* Tablets and medium-size screens */
 @media screen and (max-width: 680px) {
@@ -374,7 +360,6 @@ hr {
 
 /* Smartphones and small-size screens */
 @media screen and (max-width: 570px) {
-
 
     #position-wrapper {
         height: 100vh;
@@ -457,11 +442,63 @@ hr {
     .board-container {
         margin: 10px;
     }
+}
 
+/* Very Small Smartphones */
+@media screen and (max-width: 350px) and (max-height: 550px) {
+
+    h1 {
+        padding-top: 0;
+    }
+
+    hr {
+        margin-bottom: 3px;
+    }
+
+    .game-wrapper {
+        max-height: 100vh;
+    }
+
+    #board {
+        width: 225px;
+    }
+
+    .field {
+        height: 75px;
+        width: 75px;
+    }
+
+    .player-info {
+        height: 20px;
+    }
+
+    .players {
+        padding: 4px 15px 6px;
+    }
+
+    #button-wrapper button {
+        line-height: 24px;
+        font-size: 18px;
+        padding: 0px 15px;
+        margin: 10px 20px 5px;
+    }
+
+    #help-button {
+        margin-bottom: 5px;
+        width: 25px;
+        height: 25px;
+        font-size: 15px;
+        margin-left: 20px;
+    }
+
+    .score-area {
+        font-size: 1rem;
+    }
 }
 
 /* Adjust the game-wrapper for certain models of smatphones */
 @media screen and (min-height: 650px) {
+    
     .game-wrapper {
         max-height: 80%;
     }
@@ -471,7 +508,7 @@ hr {
     }
 }
 
-/* Desktop screens */
+/* Desktop Screens */
 @media screen and (min-height: 890px) {
 
     #position-wrapper {
@@ -485,9 +522,9 @@ hr {
     #heading-wrapper {
         margin-top: 85px;
     }
-
 }
 
+/* Desktop Screens with Higher Aspect Ratio */
 @media screen and (max-height: 890px) and (min-width: 1000px) {
 
     #position-wrapper {
@@ -578,58 +615,4 @@ hr {
     .board-container {
         margin: 10px;
     }
-}
-
-/* Very Small Smartphones */
-@media screen and (max-width: 350px) and (max-height: 550px) {
-
-    h1 {
-        padding-top: 0;
-    }
-
-    hr {
-        margin-bottom: 3px;
-    }
-
-    .game-wrapper {
-        max-height: 100vh;
-    }
-
-    #board {
-        width: 225px;
-    }
-
-    .field {
-        height: 75px;
-        width: 75px;
-    }
-
-    .player-info {
-        height: 20px;
-    }
-
-    .players {
-        padding: 4px 15px 6px;
-    }
-
-    #button-wrapper button {
-        line-height: 24px;
-        font-size: 18px;
-        padding: 0px 15px;
-        margin: 10px 20px 5px;
-    }
-
-    #help-button {
-        margin-bottom: 5px;
-        width: 25px;
-        height: 25px;
-        font-size: 15px;
-        margin-left: 20px;
-    }
-
-    .score-area {
-        font-size: 1rem;
-    }
-
-
 }

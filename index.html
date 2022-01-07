@@ -56,11 +56,10 @@
             <!-- Game Controls Section -->
             <div id="game-controls">
                 <p class="game-control" id="timer">00:15 sec</p>
-                <button class="game-control" id="volume"><i class="fas fa-volume-up"></i></button>
+                <button class="game-control" aria-label="volume-button" id="volume"><i class="fas fa-volume-up"></i></button>
                 <!-- data-modal-target is a selector for JS that points out to element to be open with button -->
-                <button data-modal-target="#modal" class="game-control" id="help-button">?</button>
+                <button data-modal-target="#modal" class="game-control" aria-label="help-button" id="help-button">?</button>
                 <!-- Modal popup widnow come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw -->
-                <audio loop id="main-theme" src="assets/audio/clock-ticking.wav"></audio>
             </div>
             <!-- Gameplay Information - Top -->
             <div class="player-info">
@@ -85,6 +84,7 @@
             <div class="player-info">
                 <p id="end-game-condition"></p>
                 <!-- Audio Elements for Gameplay Events -->
+                <audio loop id="main-theme" src="assets/audio/clock-ticking.wav"></audio>
                 <audio id="marker-sound" src="assets/audio/punch.wav"></audio>
                 <audio id="lose-laugh" src="assets/audio/lose_laugh.mp3"></audio>
                 <audio id="win-sound" src="assets/audio/win_sound.mp3"></audio>
