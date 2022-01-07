@@ -309,6 +309,7 @@ hr {
 
 /* RESPONSIVENESS */
 
+
 /* Tablets and medium-size screens */
 @media screen and (max-width: 680px) {
 
@@ -498,7 +499,7 @@ hr {
 
 /* Adjust the game-wrapper for certain models of smatphones */
 @media screen and (min-height: 650px) {
-    
+
     .game-wrapper {
         max-height: 80%;
     }
@@ -615,4 +616,14 @@ hr {
     .board-container {
         margin: 10px;
     }
+}
+
+@media screen and (max-width: 430px) and (max-height: 930px) {
+    
+    #heading-wrapper {
+        margin-top: 20px
+    }
+#game-wrapper {
+    max-height: 70%;
+}
 }
