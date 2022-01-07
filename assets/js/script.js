@@ -23,7 +23,6 @@ document.getElementById("reset-button").addEventListener("click", (e) => {
     let playerScore = document.getElementById("player-score");
     let start = document.getElementById("start-button");
     let fields = document.getElementsByClassName("field");
-    let suffix = ":";
 
     gameOn = false;
     timeLeft = -1;
@@ -64,15 +63,15 @@ document.querySelectorAll('[data-modal-target]').forEach(button => {
             const modal = document.querySelector(button.dataset.modalTarget);
             openModal(modal);
         }
-    })
-})
+    });
+});
 
 // Iteration through every button element in HTML to execute a closeModal function for elements with specified parent class - come from https://www.youtube.com/watch?v=MBaw_6cPmAw
 document.querySelectorAll('[data-close-button]').forEach(button => {
     button.addEventListener('click', () => {
         const modal = button.closest('.modal'); // looks for the closest parent with 'modal' class
         closeModal(modal);
-    })
+    });
 });
 
 // Overlay event listener - iterates through elements with specified selector and executes the closeModal function if applicable - come from https://www.youtube.com/watch?v=MBaw_6cPmAw
@@ -80,21 +79,21 @@ document.getElementById('overlay').addEventListener('click', () => {
     const modals = document.querySelectorAll('.modal.active');
     modals.forEach(modal => {
         closeModal(modal);
-    })
+    });
 });
 
 // DOM CONTROL
 
 /** Function adds class '.active' to modal argument to control the popup window operation, or returns nothing if modal element is null - come from https://www.youtube.com/watch?v=MBaw_6cPmAw */
 function openModal(modal) {
-    if (modal === null) return
+    if (modal === null) return;
     modal.classList.add('active');
     overlay.classList.add('active');
 }
 
 /** Function removes class '.active' to modal argument to control the popup window operation, or returns nothing if modal element is null - come from https://www.youtube.com/watch?v=MBaw_6cPmAw */
 function closeModal(modal) {
-    if (modal === null) return
+    if (modal === null) return;
     modal.classList.remove('active');
     overlay.classList.remove('active');
 }
@@ -346,11 +345,9 @@ function checkEmptyCells() {
 function computerPlay() {
 
     let endGameCondition = document.getElementById("end-game-condition");
-    let computerScore = document.getElementById("computer-score");
     let loseLaugh = document.getElementById("lose-laugh");
     let endTime = document.getElementById("end-time-bell");
     let fields = document.getElementsByClassName("field");
-    let suffix = ":";
 
     // Block of code executed only if game is ON
     if (gameOn) {
@@ -392,14 +389,12 @@ function fieldClicked(event) {
     let endGameCondition = document.getElementById("end-game-condition");
     let computerTurn = document.getElementById("computer");
     let playerTurn = document.getElementById("player");
-    let playerScore = document.getElementById("player-score");
     let markerSound = document.getElementById("marker-sound");
     let winSound = document.getElementById("win-sound");
     let endTime = document.getElementById("end-time-bell");
 
     let id = event.target.id; // Stores id of clicked gameboard field
     let playerMove = true;
-    let suffix = ":"; // Variable for timer operation
     // console.log(id);
 
     // Clears all gamplay messages
@@ -419,7 +414,9 @@ function fieldClicked(event) {
             timeLeft = 15; // Sets a timer to 15 second after valid move (restarts counter)
             playerMove = false; // Sets playerMove to false after valid move to allow for computerPlay execution
 
-            markerSound.play(); // Every player move is represented with sound effect
+            if (!playerWon()) {
+                markerSound.play(); // Every player move is represented with sound effect
+            }
 
             // Block of code executed if player has won and there is no tie.
             if (playerWon() && checkTie() === false) {
@@ -428,7 +425,7 @@ function fieldClicked(event) {
                 endGameCondition.innerHTML = '<span class="player-x">PLAYER</span> has won!'; // Updates gameplay message with player winning condition
 
                 // Plays applicable sound effect and pauses other relevant
-                markerSound.pause();
+                // markerSound.pause();
                 endTime.pause();
                 winSound.play();
 
@@ -557,7 +554,7 @@ function setTimer(event) {
             }
 
         } else {
-            
+
             // Block of code to control timer display - if time < 10, the suffix is updated to show figures correctly and gameplay messages dissapears from the screen
             if (timeLeft < 10) {
 
@@ -576,20 +573,20 @@ function setTimer(event) {
 
 /** Function to increment player score - based on Code Institute "Love Maths" project. */
 function incrementPlayerScore() {
-    
+
     let playerScore = document.getElementById("player-score");
     let oldScore = parseInt(playerScore.innerText);
-    
+
     playerScore.innerText = ++oldScore;
 
 }
 
 /** Function to increment computer score - based on Code Institute "Love Maths" project. */
 function incrementComputerScore() {
-    
+
     let computerScore = document.getElementById("computer-score");
     let oldScore = parseInt(computerScore.innerText);
 
     computerScore.innerText = ++oldScore;
-    
+
 }
