@@ -368,6 +368,7 @@ hr {
     #position-wrapper {
         height: 100vh;
     }
+
     h1 {
         font-size: 28px;
         padding-top: 15px;
@@ -434,7 +435,7 @@ hr {
 
 }
 
-@media screen and (max-height: 830px) {
+/* @media screen and (max-height: 830px) {
     .game-wrapper {
         max-height: 80%;
     }
@@ -444,4 +445,12 @@ hr {
     .game-wrapper {
         max-height: 95%;
     }
+} */
+
+@media screen and (min-height: 1100px) {
+
+    #position-wrapper {
+        height: 100vh;
+    }
+
 }
