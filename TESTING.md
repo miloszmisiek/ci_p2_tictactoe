@@ -1,6 +1,6 @@
 # Testing
-## HTML & CSS Validators
-Source codes was tested using HTML and CSS validators. No errors present.
+## HTML, CSS and JavaScript Validators
+Source codes was tested using HTML, CSS and JavaScript validators. No error was found, some warnings present.
 1. HTML Validator [W3C Markup Validator](https://validator.w3.org/).
   
     ![HTML Validator](assets/images/testing/html-validator.png)
@@ -10,10 +10,11 @@ Source codes was tested using HTML and CSS validators. No errors present.
 
     ![CSS Validator](assets/images/testing/jigsaw-css-validator.png)
 
-3. JavaScript Validator [JSHint](https://jshint.com/)
-To validate the script.js file, free JSHint validator was used for this project. Below the results:
-    - 79 warnings present, all related to modern JavaScript code: "(...)is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz)."
-    
+3. JavaScript Validator [JSHint](https://jshint.com/).
+
+- JSHint is a community-driven tool that detects errors and potential problems in JavaScript code. 
+- To validate the [script.js](assets/js/script.js) file, free JSHint validator was used for this project. Below the results:
+  - 79 warnings present, all related to modern JavaScript code: "(...)is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz)." All warnings dissapeard after adding one line of comment on top of [script.js](assets/js/script.js) file: "/*jshint esversion: 6 */" <br>
     ![JSHint Warnings Example](assets/images/testing/jshint-warnings.png)
 
 ## Responsiveness
@@ -24,14 +25,14 @@ Responsiveness design was checked with [Google Chrome Dev Tools](https://develop
 | Render |   pass  |    pass   |     pass    |   pass   | pass |   pass   |    pass    |     pass    |
 | Images |   pass  |    pass   |     pass    |   pass   | pass |   pass   |    pass    |     pass    |
 
-## User Stories
 
 ## Browser Compatibility
 ECOCITY website was successfully tested on following browsers with no issues noticed:
-- Google Chrome Version 96.0.4664.55
-- Mozilla Firefox Version 94.0.2
-- Safari Version 14.1.2
-- Microsoft Edge Version 96.0.1054.34
+- Google Chrome Version 96.0.4664.110
+- Mozilla Firefox Version 95.0.2
+- Safari Version 15.2
+- Microsoft Edge Version 97.0.1072.55
+  
 Layout and responsiveness stayed consistent for different viewports and browsers.
 ## Bugs
 ### 1. Computer can play when user clicks occupied field.
@@ -41,8 +42,6 @@ Bug was fixied by adding 'playerMove' boolean variable to 'fieldClicked' event l
 - only when playerMove value is *false*, *computerPlay()* function can be executed
 ### 2. Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause().
 Bug was fixed by removing a pause() method from the markerSound element in fieldClicked function and adding if statment to markerSound.play() method.
-    
-![Submit Page Bug](assets/images/testing/submit-page-bug.png)
 
 ## Google Lighthouse
 The website was tested using [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) in Chrome Dev Tools for desktop and mobile versions.

@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */ // for JSHint warnings
+
 // All modal elements, functions and eventListeners come from YouTube tutorial: https://www.youtube.com/watch?v=MBaw_6cPmAw
 
 // GLOBAL VARIABLES (Gameplay Control)
