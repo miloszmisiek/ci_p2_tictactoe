@@ -637,3 +637,15 @@ hr {
         max-height: 80%;
     }
 }
+
+/* Galaxy Fold */
+@media screen and (max-width: 300px) {
+    .players {
+        padding: 10px 8px;
+    }
+
+    .game-wrapper {
+        max-width: 95%;
+        max-height: 85%;
+    }
+}
