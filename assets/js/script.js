@@ -108,16 +108,16 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let i = 0; i < fields.length; i++) {
 
         if (i < 3) {
-            fields[i].style.borderBottom = "1px solid var(--gray)";
+            fields[i].style.borderBottom = "1px solid var(--main-color)";
         }
         if (i % 3 === 0) {
-            fields[i].style.borderRight = "1px solid var(--gray)";
+            fields[i].style.borderRight = "1px solid var(--main-color)";
         }
         if (i > 5) {
-            fields[i].style.borderTop = "1px solid var(--gray)";
+            fields[i].style.borderTop = "1px solid var(--main-color)";
         }
         if (i % 3 === 2) {
-            fields[i].style.borderLeft = "1px solid var(--gray)";
+            fields[i].style.borderLeft = "1px solid var(--main-color)";
         }
 
         // Event listener to follow gameboard moves

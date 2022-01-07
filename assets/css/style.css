@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Patrick+Hand&display=swap');
 
 :root {
-    --gray: #422800;
+    --main-color: #422800;
     /* using css variables for repetive use of same color with calling name instead of hex value*/
 }
 
@@ -15,28 +15,15 @@
 }
 
 body {
-    color: var(--gray);
+    color: var(--main-color);
     font-family: 'Patrick Hand', sans-serif;
     background: url("../images/background.webp");
     background-size: cover;
 }
 
-/* #total-wrapper {
-    height: 100vh;
-    border: 1px solid red;
-    background: url("../images/background.webp");
-    background-size: cover;
-
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-} */
-
 
 #position-wrapper {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,13 +42,9 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     margin: auto;
     position: relative;
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);  */
 }
 
 /* HEADING */
@@ -69,9 +52,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 12vh; */
     margin-top: 20px;
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 
 h1 {
@@ -80,7 +62,7 @@ h1 {
 }
 
 hr {
-    border-top: 1px solid var(--gray);
+    border-top: 1px solid var(--main-color);
     margin-bottom: 5px;
     width: 80%;
     max-width: 600px;
@@ -91,7 +73,7 @@ hr {
     cursor: pointer;
     margin-bottom: 5px;
     margin-left: 25px;
-    color: var(--gray);
+    color: var(--main-color);
     font-family: 'Patrick Hand', sans-serif;
     width: 50px;
     height: 50px;
@@ -111,7 +93,7 @@ hr {
     /* scale(0) sets modal to invisible */
     transition: 200ms ease-in-out;
     /* gradually apears/disapears over set time frame */
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 10px;
     z-index: 15;
     background-color: white;
@@ -179,7 +161,7 @@ hr {
     height: 50px;
     font-size: 30px;
     margin-right: 40px;
-    border: 2px solid purple;
+    /* border: 2px solid purple; */
 }
 
 .player-turn {
@@ -194,13 +176,13 @@ hr {
     align-items: center;
     margin-right: 20px;
     margin-top: 20px;
-    border: 2px solid bisque;
+    /* border: 2px solid bisque; */
 }
 
 .game-control {
     margin: 0 25px;
     font-size: 30px;
-    color: var(--gray);
+    color: var(--main-color);
 }
 
 #volume {
@@ -217,7 +199,7 @@ hr {
     align-items: center;
     flex-direction: column;
     /* elements on top of each other */
-    border: 2px solid brown;
+    /* border: 2px solid brown; */
 }
 
 #board {
@@ -234,9 +216,8 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--gray);
+    color: var(--main-color);
     font-size: 120px;
-    /* border: 1px solid red; */
 }
 
 /* START/RESET BUTTONS */
@@ -245,14 +226,14 @@ hr {
     justify-content: center;
     align-items: center;
     margin-right: 40px;
-    border: 2px solid gray;
+    /* border: 2px solid gray; */
 }
 
 #button-wrapper button {
     margin: 30px 40px 0;
     font-family: 'Patrick Hand', sans-serif;
     background-color: #fbeee0;
-    border: 2px solid #422800;
+    /* border: 2px solid #422800; */
     border-radius: 30px;
     box-shadow: #422800 4px 4px 0 0;
     color: #422800;
@@ -286,7 +267,7 @@ hr {
     justify-content: center;
     align-items: center;
     margin-right: 40px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .players {
@@ -303,11 +284,6 @@ hr {
     font-weight: bold;
 }
 
-/* screen and (max-height: 1100px) */
-
-/* .game-wrapper {
-        max-height: 80%;
-    } */
 
 @media screen and (max-width: 680px) {
 
@@ -351,15 +327,6 @@ hr {
     #button-wrapper button {
         margin: 20px 30px 0;
     }
-
-    /* #board {
-        width: 300px;
-    }
-
-    .field {
-        height: 100px;
-        width: 100px;
-    } */
 }
 
 @media screen and (max-width: 570px) {
@@ -404,6 +371,7 @@ hr {
     .field {
         width: 80px;
         height: 80px;
+        font-size: 60px;
     }
 
     #help-button {
@@ -435,17 +403,11 @@ hr {
 
 }
 
-/* @media screen and (max-height: 830px) {
-    .game-wrapper {
+@media screen and (min-height: 650px) {
+    .game-wrapper{
         max-height: 80%;
     }
 }
-
-@media screen and (max-height: 600px) {
-    .game-wrapper {
-        max-height: 95%;
-    }
-} */
 
 @media screen and (min-height: 1100px) {
 
