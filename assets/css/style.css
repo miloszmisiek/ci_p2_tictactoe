@@ -649,3 +649,10 @@ hr {
         max-height: 85%;
     }
 }
+
+/* iPhone 5 */
+@media screen and (min-width: 305px) and (max-width: 365px) {
+    .game-wrapper{
+        max-height: 100vh;
+    }
+}
