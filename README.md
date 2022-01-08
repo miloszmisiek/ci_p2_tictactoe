@@ -1,4 +1,4 @@
-<h1 align="center"><a name="top">TIC TAC TOE</a><h1>
+<h1 align="center"><a name="top">TIC TAC TOE</a></h1>
 
 Hello Stranger,
 
@@ -150,7 +150,44 @@ TIE CONDITION<br>
 # Testing
 All various test results are presented in separate [TESTING](TESTING.md) file.
 
+# Deployment
+## Using GitHub Pages to deploy the project.
+The website was deployed to GitHub pages. The steps are as follows:
+1. In GitHub project repository, click on **Settings** tab.
 
+![GitHub Repository](assets/images/readme/github-deployment-1.png)
+
+2. On the left side, find **Pages** tab.
+3. On the right side of navigation table, find **Source** section and select *main* in the *branch* tab, make sure *root* directory is selected, and press **Save**.
+4. If steps were successfully followed, the green box will appear with a message that the site was deployed.
+
+    *Until the site is published and ready to view, it can take several minutes for the server to response.*
+
+![GitHub Pages](assets/images/readme/github-deployment-2.png)
+
+The live link can be found here - [ECOCITY](https://miloszmisiek.github.io/ci_p1_ecocity/).
+## Fork a repository.
+A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project. The steps are as follows:
+1. On the GitHub.com navigate to repository page.
+2. In the top-right corner of the page, click **Fork**.
+
+![Fork Repo](/assets/images/readme/fork-repo.png)
+
+You can fork a repository to create a copy of the repository and make changes without affecting the upstream repository.
+## Clone a repository.
+In GitHub you have option to create a local copy (clone) of your repository on your device hard drive. The steps are as follows:
+1. On the GitHub.com navigate to repository page.
+2. Locate the *Code* tab and click on it.
+3. In the expanded window, click the two squares icon to copy https link of the repository.
+
+![Cloning Repository](assets/images/readme/clone-repo-1.png)
+
+4. On your computer, open **Terminal**.
+5. Navigate to the directory of choice.
+6. Type **git clone** and paste the copied link of the repository.
+7. Press **Enter** and the local clone of the repository will be created in the selected directory.
+
+![Cloning Repository - terminal](/assets/images/readme/clone-repo-terminal.png)
 
 # Credits
 ## Content
