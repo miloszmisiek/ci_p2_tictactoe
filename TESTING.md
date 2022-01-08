@@ -59,6 +59,13 @@ Bug was fixed by adding 'playerMove' boolean variable to 'fieldClicked' event li
 - Only when playerMove value is *false*, *computerPlay()* function can be executed.
 ### 2. Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause().
 Bug was fixed by removing a pause() method from the markerSound element in fieldClicked function and adding if statement to markerSound.play() method.
+### 3. Error with Permissions-Policy header: Unrecognized feature: 'interest-cohort'.
+![Chrome Console Bug](assets/images/testing/console-bug.png).<br>
+From the official GitHub website:
+"All GitHub Pages sites served from the github.io domain will now have a Permissions-Policy: interest-cohort=() header set.
+Pages sites using a custom domain will not be impacted." - GitHub hosted pages disable FLoC, which is Google's 3rd party cookie alternative.
+Error can be ignored.
+
 
 ## Google Lighthouse
 The website was tested using [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) in Chrome Dev Tools for desktop and mobile versions.
