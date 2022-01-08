@@ -24,6 +24,7 @@ Responsiveness design was checked with [Google Chrome Dev Tools](https://develop
 |--------|:-------:|:---------:|:-----------:|:--------:|:----:|:--------:|:----------:|:-----------:|
 | Render |   pass  |    pass   |     pass    |   pass   | pass |   pass   |    pass    |     pass    |
 | Images |   pass  |    pass   |     pass    |   pass   | pass |   pass   |    pass    |     pass    |
+| Sounds |   pass  |    pass   |     pass    |   pass   | pass |   pass   |    pass    |     pass    |
 
 
 ## Testing User Stories
