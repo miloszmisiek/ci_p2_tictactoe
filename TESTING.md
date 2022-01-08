@@ -54,9 +54,9 @@ Layout and responsiveness stayed consistent for different viewports and browsers
 ## Bugs
 ### 1. Computer can play when user clicks occupied field.
 Bug was fixed by adding 'playerMove' boolean variable to 'fieldClicked' event listener in script.js:
-- after click event the playerMove value is set to *true*
-- when user makes a move on empty field, value is set to *false*
-- only when playerMove value is *false*, *computerPlay()* function can be executed
+- After click event the playerMove value is set to *true*,
+- When user makes a move on empty field, value is set to *false*,
+- Only when playerMove value is *false*, *computerPlay()* function can be executed.
 ### 2. Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause().
 Bug was fixed by removing a pause() method from the markerSound element in fieldClicked function and adding if statement to markerSound.play() method.
 
