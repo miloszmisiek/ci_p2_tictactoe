@@ -1,6 +1,6 @@
 <h1 align="center">TIC TAC TOE</h1>
 
-<p style="text-align='justify'">Hello Stranger,
+<p align="justify">Hello Stranger,
 
 This web browser based **Tic Tac Toe** game is a simple solution for users who want to entertain themselves a bit while taking a break from work. The game is designed to play against computer with very basic algorithm of randomly selected fields. It is a single page web browser game with use of HTML and CSS for basic site structure and styling with JavaScript handling the DOM and the gameplay itself.
 
