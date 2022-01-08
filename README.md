@@ -11,9 +11,38 @@ Enjoy your journey!
 ![Am I Responsive](assets/images/readme/am-i-responsive.png)
 
 # Contents
-1. **[User Experience](#user-experience)**
-2. **[Features](#features)**
-3. **[Credits](#credits)**
+- [Contents](#contents)
+- [User Experience](#user-experience)
+  - [User Stories](#user-stories)
+  - [Wireframes](#wireframes)
+    - [Landing Page](#landing-page)
+    - [Player Win Notice](#player-win-notice)
+    - [Smartphone View](#smartphone-view)
+  - [Site Structure](#site-structure)
+    - [Fonts](#fonts)
+    - [Colour](#colour)
+- [Features](#features)
+  - [Gameplay](#gameplay)
+  - [Game Arena](#game-arena)
+    - [Game Title](#game-title)
+    - [Game Controls](#game-controls)
+    - [Player Information/Gameplay Messages](#player-informationgameplay-messages)
+    - [Gameboard](#gameboard)
+    - [Start/Reset Buttons](#startreset-buttons)
+    - [Score Section](#score-section)
+    - [Instructions Window](#instructions-window)
+    - [Audio Elements/Sound Effects](#audio-elementssound-effects)
+  - [Future Features](#future-features)
+- [Technologies Used](#technologies-used)
+- [Testing](#testing)
+- [Deployment](#deployment)
+  - [Using GitHub Pages to deploy the project.](#using-github-pages-to-deploy-the-project)
+  - [Fork a repository.](#fork-a-repository)
+  - [Clone a repository.](#clone-a-repository)
+- [Credits](#credits)
+  - [Content](#content)
+  - [Media](#media)
+- [Acknowledgements](#acknowledgements)
 
 # User Experience
 ## User Stories
