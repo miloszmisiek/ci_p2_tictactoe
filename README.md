@@ -120,16 +120,16 @@ The idea behind Tic Tac Toe represented in this project is to be of simple const
 - Bottom area gives player information regarding who moves first, win/lose/tie condition and when time to make a move has elapsed.
 
 **STARTING CONDITION** <br>
-![Starting Message](assets/images/readme/start-condition.png)
+<br>![Starting Message](assets/images/readme/start-condition.png)
 
 **TIMER END**<br>
-![Timer End](assets/images/readme/timer-end.png)
+<br>![Timer End](assets/images/readme/timer-end.png)
 
 **WINNING CONDITION (COMPUTER EXAMPLE)**<br>
-![Winning Condition](assets/images/readme/winning-condition.png)
+<br>![Winning Condition](assets/images/readme/winning-condition.png)
 
 **TIE CONDITION**<br>
-![Tie Condition](assets/images/readme/tie-condition.png)
+<br>![Tie Condition](assets/images/readme/tie-condition.png)
 
 ### Gameboard
 - Location: center of gameplay area.
