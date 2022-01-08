@@ -28,15 +28,15 @@ Responsiveness design was checked with [Google Chrome Dev Tools](https://develop
 
 
 ## Testing User Stories
-- As a user, I want to play intuitive
+- As a user, I want to play intuitive.
   - Every button is clearly represented on his function and game logic follows the classic rules of Tic Tac Toe.
 - As a user, I want to have access to instructions which are clearly identified.
   - Player can access instructions by Help Button represented with question mark in the circle.
-- As a user, I want to play muted in cases it will interrupt the others around me.
+- As a user, I want to play muted in cases it will disturb the others around me.
   - Player has ability to mute the game sounds by clicking Volume Button. Volume button identifies the mute condition with selected icon.
-- As a user, I want to be entrained through complete gameplay.
+- As a user, I want to be entrained throughout the gameplay.
   - Different sounds accompany player throughout the game.
-- As a user, I want to see my score and my opponent's score.
+- As a user, I want to see what is mine and my opponents.
   - Separate section is used to distinguish Player and Computer score.
 - As a user, I want to have a fair game.
   - There is random selection of first move and marker icon. Neither Player or Computer can make invalid move.

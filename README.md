@@ -48,9 +48,9 @@ Enjoy your journey!
 ## User Stories
 - As a user, I want to play intuitive.
 - As a user, I want to have access to instructions which are clearly identified.
-- As a user, I want to play muted in cases it will interrupt the others around me.
-- As a user, I want to be entrained through complete gameplay.
-- As a user, I want to see my score and my opponent's score.
+- As a user, I want to play muted in cases it will disturb the others around me.
+- As a user, I want to be entrained throughout the gameplay.
+- As a user, I want to see what is mine and my opponents.
 - As a user, I want to have a fair game.
 - As a user, I want to play mobile if I must travel.
 ## Wireframes
@@ -67,7 +67,7 @@ Enjoy your journey!
 ![Smartphone View](/assets/images/readme/smartphone.webp)
 
 ## Site Structure
-[Tic Tac Toe](https://miloszmisiek.github.io/ci_p2_tictactoe/) is a single page web browser game with buttons and gameboard area created to interact with a player. Instruction window is available through help-button represented with question mark in the circle. Next to help-button there are volume ON/OFF button and timer. To control gameplay there are buttons below the gameboard and the very last part is player and computer score counter.
+[Tic Tac Toe](https://miloszmisiek.github.io/ci_p2_tictactoe/) is a single page web browser game with buttons and gameboard area created to interact with a player. Instruction window is available through help-button represented with question mark in the circle. Next to help-button there are volume ON/OFF button and timer. To control gameplay there are buttons below the gameboard and the very last part is player/computer score counter.
 
 ### Fonts
 Two styles of fonts are used for the project: 'Cabin Sketch' for heading (game title) and 'Patrick Hand' for body text elements. The choice was made to represent best the handwriting effect. All fonts are backed-up with sans-serif.
@@ -234,7 +234,7 @@ In GitHub you have option to create a local copy (clone) of your repository on y
 - The main idea of how to build the game come from *James Q Quick* [YouTube Tutorial](https://www.youtube.com/watch?v=E621N5GBKv8&t=1341s).
 - Modal pop-up window used for game's instructions section copied from *Web Dev Simplified* [YouTube Tutorial](https://www.youtube.com/watch?v=MBaw_6cPmAw).
 - Part of code used for game's Score Area come from [Code Institute](https://codeinstitute.net/) 'Love Math’s' Essential Project.
-- README file is based on game’s owner previous project [ECOCITY](https://github.com/miloszmisiek/ci_p1_ecocity) and some concepts are inspired from the fellow Code Institute student [Mycrosys](https://github.com/Mycrosys/marblesgame).
+- README file is based on game’s owner previous project [ECOCITY](https://github.com/miloszmisiek/ci_p1_ecocity) and some concepts are inspired by fellow Code Institute student [Mycrosys](https://github.com/Mycrosys/marblesgame) project.
 - README and TESTING files text grammar and typing were checked using [Microsoft Word](https://www.microsoft.com/pl-pl/microsoft-365/word).
 - Fonts are implemented using [Google Fonts](https://fonts.google.com/).
 - Icons are implemented from [Font Awesome](https://fontawesome.com/).
