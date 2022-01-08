@@ -1,4 +1,4 @@
-<h1 align="center"><a name="top">TIC TAC TOE</a></h1>
+TIC TAC TOE
 
 Hello Stranger,
 
