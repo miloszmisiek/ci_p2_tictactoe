@@ -11,8 +11,8 @@ Enjoy your journey!
 ![Am I Responsive](assets/images/readme/am-i-responsive.png)
 
 # Contents
-**- [Contents](#contents)**
-**- [User Experience](#user-experience)**
+- **[Contents](#contents)**
+- **[User Experience](#user-experience)**
   - [User Stories](#user-stories)
   - [Wireframes](#wireframes)
     - [Landing Page](#landing-page)
@@ -21,7 +21,7 @@ Enjoy your journey!
   - [Site Structure](#site-structure)
     - [Fonts](#fonts)
     - [Colour](#colour)
-**- [Features](#features)**
+- **[Features](#features)**
   - [Gameplay](#gameplay)
   - [Game Arena](#game-arena)
     - [Game Title](#game-title)
@@ -33,16 +33,16 @@ Enjoy your journey!
     - [Instructions Window](#instructions-window)
     - [Audio Elements/Sound Effects](#audio-elementssound-effects)
   - [Future Features](#future-features)
-**- [Technologies Used](#technologies-used)**
-**- [Testing](#testing)**
-**- [Deployment](#deployment)**
+- **[Technologies Used](#technologies-used)**
+- **[Testing](#testing)**
+- **[Deployment](#deployment)**
   - [Using GitHub Pages to deploy the project.](#using-github-pages-to-deploy-the-project)
   - [Fork a repository.](#fork-a-repository)
   - [Clone a repository.](#clone-a-repository)
-**- [Credits](#credits)**
+- **[Credits](#credits)**
   - [Content](#content)
   - [Media](#media)
-**- [Acknowledgements](#acknowledgements)**
+- **[Acknowledgements](#acknowledgements)**
 
 # User Experience
 ## User Stories
