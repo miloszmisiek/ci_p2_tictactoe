@@ -19,11 +19,11 @@ Enjoy your journey!
 ## User Stories
 - As a user, I want to play intuitive.
 - As a user, I want to have access to instructions which are clearly identified.
-- As a user, I want to play muted in cases it will interupt the others around me.
-- As a user, I want to be entrainted through complete gameplay.
+- As a user, I want to play muted in cases it will interrupt the others around me.
+- As a user, I want to be entrained through complete gameplay.
 - As a user, I want to see my score and my opponent's score.
 - As a user, I want to have a fair game.
-- As a user, I want to play mobile if I have to travel.
+- As a user, I want to play mobile if I must travel.
 ## Wireframes
 [Balsamiq](https://balsamiq.com/) was used to create wireframes as a part of project planning. They were used to discuss the concept of the website with a designated Code Institute mentor. The final project differs in some places from the original concept presented below to improve UX or responsiveness of the site.
 
@@ -38,29 +38,40 @@ Enjoy your journey!
 ![Smartphone View](/assets/images/readme/smartphone.webp)
 
 ## Site Structure
-[Tic Tac Toe](https://miloszmisiek.github.io/ci_p2_tictactoe/) is a single page web browser game with buttons and gameboard area created to interact with a player. Intruction window is available through help-button represented with question mark in the circle. Next to help-button there are volume ON/OFF button and timer. To control gameplay there are buttons below the gameboard and the very last part is player and computer score counter.
+[Tic Tac Toe](https://miloszmisiek.github.io/ci_p2_tictactoe/) is a single page web browser game with buttons and gameboard area created to interact with a player. Instruction window is available through help-button represented with question mark in the circle. Next to help-button there are volume ON/OFF button and timer. To control gameplay there are buttons below the gameboard and the very last part is player and computer score counter.
 
 ### Fonts
-Two styles of fonts are used for the project: 'Cabin Sketch' for heading(game title) and 'Patrick Hand' for body text elements. The choice was made to represent best the hand writing effect. All fonts are backed-up with sans-serif.
+Two styles of fonts are used for the project: 'Cabin Sketch' for heading (game title) and 'Patrick Hand' for body text elements. The choice was made to represent best the handwriting effect. All fonts are backed-up with sans-serif.
 
 ### Colour
-The body backgound photo was selected to imitate wooden table. Gameplay area background photo represents white notepad. Together they contrst well and gives user the feeling of playing a game on piece of paper laying on the table.<br>
+The body background photo was selected to imitate wooden table. Gameplay area background photo represents white notepad. Together they contrast well and gives user the feeling of playing a game on piece of paper laying on the table.<br>
 <br><span style="color:green">Green</span> is a color representing player in the game.
 <br><span style="color:red">Red</span> is a color representing computer in the game.<br>
-<br>Markers, score and gamplay messages are coloured depending on player's or computer's action.
-This contrasts well, green and red are strong colours, so user will easly recognize which actions were taken. <br>
-<br>Text colour is <span style="color:#422800">very dark orange brown tone </span>, the inspiration came from Start/Reset buttons styling found in [getcsssan.com](https://getcssscan.com/css-buttons-examples). It was noticed to contrast well with all gameplay elements. <br>
+<br>Markers, score and gameplay messages are coloured depending on player's or computer's action.
+This contrasts well, green and red are strong colours, so user will easily recognize which actions were taken. <br>
+<br>Text colour is <span style="color:#422800">very dark orange, brown tone </span>, the inspiration came from Start/Reset buttons styling found in [getcsssan.com](https://getcssscan.com/css-buttons-examples). It was noticed to contrast well with all gameplay elements. <br>
 ![Text Colour](assets/images/readme/text-colour.png) <br>
-<br>Start/Reset buttons have backround colour of <span style="color:#fbece0">light grayish orange</span>. It adds a pinch of colourfulness to the gamplay area. <br>
+<br>Start/Reset buttons have background colour of <span style="color:#fbece0">light grayish orange</span>. It adds a pinch of colorfulness to the gameplay area. <br>
 ![Buttons Background Colour](assets/images/readme/buttons-background.png) <br>
 
 # Features
-The idea behind Tic Tac Toe represented in this project is to be of simple construction and intuitive to play. Gamaboard is centered verticaly and horizontaly, for mobile devices it occupies almost all screen.
+The idea behind Tic Tac Toe represented in this project is to be of simple construction and intuitive to play. Gameboard is centered vertically and horizontally, for mobile devices it occupies almost all screens.
 
+## Gameplay
+- When player clicks **START** button markers 'X' and 'O" are randomly distributed to Player and Computer.
+- Who has first move is randomly drawn - like "coin flip".
+- Player's marker is always <span style="color:green">green</span> and computer is always <span style="color:red">red</span>.
+- To **win a game**, Player (or Computer) must place his **mark 3 fields** next to each other vertically, horizontally or diagonally.<br>
+  ![Tic Tac Toe Wins](assets/images/readme/tic-tac-toe-wins.png)<br>
+- Player and Computer can mark only once per turn.
+- Player has **time limit** for his move equals to **15 seconds**.
+- Timer starts when Player press **START/RESTART** button and is reset after every turn.
+- After every win respective score counter is updated for Player or Computer.
 
+## Game Arena
 ### Game Title
 - Location: top of gameplay area
-- Simple design, game title seperated with a line from the next section.
+- Simple design, game title separated with a line from the next section.
 
 ![Game Title](assets/images/readme/game-title.png)
 
@@ -68,27 +79,27 @@ The idea behind Tic Tac Toe represented in this project is to be of simple const
 - Location: under Game Title.
 - Elements:
   - Timer - counts down from 15sec to zero.
-  - Volume Button - mutes/plays game's sound effects(only during gameplay).
+  - Volume Button - mutes/plays game's sound effects(only during gameplay). Icon changes depending on volume preference.
   - Help Button - gives access to game instructions (only if game is stopped).
 - Buttons when hovered change the colour to orange to help user identify interactive elements.
 
 ![Game Controls](assets/images/readme/game-controls.png)
 
-### Player Informations/Gameplay Messages
+### Player Information/Gameplay Messages
 - Location: above and below gameboard.
 - Top area gives player information which marker is selected to player and to computer.
 - Bottom area gives player information regarding who moves first, win/lose/tie condition and when time to make a move has elapsed.
 
-STARTING CONDITION <br>
+**STARTING CONDITION** <br>
 ![Starting Message](assets/images/readme/start-condition.png)
 
-TIMER END<br>
+**TIMER END**<br>
 ![Timer End](assets/images/readme/timer-end.png)
 
-WINNING CONDITION(COMPUTER EXAMPLE)<br>
+**WINNING CONDITION (COMPUTER EXAMPLE)**<br>
 ![Winning Condition](assets/images/readme/winning-condition.png)
 
-TIE CONDITION<br>
+**TIE CONDITION**<br>
 ![Tie Condition](assets/images/readme/tie-condition.png)
 
 ### Gameboard
@@ -102,8 +113,8 @@ TIE CONDITION<br>
 ### Start/Reset Buttons
 - Location: bottom of gameboard, below Player Information.
 - Start Button - starts the game, controls the logic of JavaScript for game ON condition.
-- Restart Button - when the game is finished, player has an option to play again. Restart button clears the board and resets the timer, but allows for score count.
-- Reset Button - resets the game and scores. Clears the gamboard, resets the timer and resets scores back to zero.
+- Restart Button - when the game is finished, player has an option to play again. Restart button clears the board and resets the timer but allows for score count.
+- Reset Button - resets the game and scores. Clears the gameboard, resets the timer and resets scores back to zero.
 - Both buttons when hovered, change background colour to white.
 
 ![START/RESET Buttons](assets/images/readme/buttons.png)<br>
@@ -165,7 +176,7 @@ The website was deployed to GitHub pages. The steps are as follows:
 
 ![GitHub Pages](assets/images/readme/github-deployment-2.png)
 
-The live link can be found here - [ECOCITY](https://miloszmisiek.github.io/ci_p1_ecocity/).
+The live link can be found here - [Tic Tac Toe](https://miloszmisiek.github.io/ci_p2_tictactoe/).
 ## Fork a repository.
 A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project. The steps are as follows:
 1. On the GitHub.com navigate to repository page.
@@ -191,10 +202,30 @@ In GitHub you have option to create a local copy (clone) of your repository on y
 
 # Credits
 ## Content
-- Colours visual representation come from [Scheme Color](https://www.schemecolor.com/flat-gray-ui-color-palette.php).
+- The main idea of how to build the game come from *James Q Quick* [YouTube Tutorial](https://www.youtube.com/watch?v=E621N5GBKv8&t=1341s).
+- Modal pop-up window used for game's instructions section copied from *Web Dev Simplified* [YouTube Tutorial](https://www.youtube.com/watch?v=MBaw_6cPmAw).
+- Part of code used for game's Score Area come from [Code Institute](https://codeinstitute.net/) 'Love Math’s' Essential Project.
+- README file is based on game’s owner previous project [ECOCITY](https://github.com/miloszmisiek/ci_p1_ecocity) and some concepts are inspired from the fellow Code Institute student [Mycrosys](https://github.com/Mycrosys/marblesgame).
+- README and TESTING files text grammar and typing were checked using [Microsoft Word](https://www.microsoft.com/pl-pl/microsoft-365/word).
+- Fonts are implemented using [Google Fonts](https://fonts.google.com/).
+- Icons are implemented from [Font Awesome](https://fontawesome.com/).
+- Colours visual representation come from [Color Hexa](https://www.colorhexa.com/).
+- START/RESET buttons styling come from [getcsssan.com](https://getcssscan.com/css-buttons-examples).
+- Markdown table for Responsiveness section in TESTING file was created using [Tables Generator](https://www.tablesgenerator.com/markdown_tables).
+- GitHub Deployment section come from [GitHub Docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
+
+## Media
 - Sound effects come from:
-  - Main game theme:  
-    - [Epic Song by BoxCat Games](https://freemusicarchive.org/music/BoxCat_Games)
-    - [Music promoted by](https://www.chosic.com/free-music/all/)
-    - [Creative Commons CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
-  - Sound effects: [mixkit.co](https://mixkit.co/free-stock-music/)
+  - Ticking Clock, Gong and Player's Move - [mixkit.co](https://mixkit.co/free-stock-music/)
+  - Win and Tie conditions - [soundboard.com](https://www.soundboard.com/).
+  - Lose condition - [soundfxcenter.com](http://soundfxcenter.com/).
+- Images come from:
+  - Notepad Gameplay Background - [Clipart Library](http://clipart-library.com/).
+  - Body Wooden Background - [Pexels](https://www.pexels.com/).
+  - Tic Tac Toe wins combinations - [Fun Paper and Pencil Games](https://funpaperandpencilgames.blogspot.com/2019/01/tic-tac-toe-strategy-tutorial.html) blog.
+
+
+# Acknowledgements
+[Tic Tac Toe](https://miloszmisiek.github.io/ci_p2_tictactoe/) website was created as part of [Code Institute](https://codeinstitute.net/) Full Stack Software Developer (e-Commerce) Diploma. I would like to express my gratitude and appreciation to my mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/) for his guidance on this project and flexibility with arranging sessions, [Code Institute](https://codeinstitute.net/) support team to always be there in case of need and fellow students for being in this learning journey together.
+
+Milosz Misiek 2022
