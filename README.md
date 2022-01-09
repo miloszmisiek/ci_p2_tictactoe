@@ -74,13 +74,13 @@ Two styles of fonts are used for the project: 'Cabin Sketch' for heading (game t
 
 ### Colour
 The body background photo was selected to imitate wooden table. Gameplay area is represented by white notepad. The intention was to give user an experience of the classic Tic Tac Toe game played on a table with a pen and paper.<br>
-<br><span style="color:green">Green</span> is a color representing player in the game.
-<br><span style="color:red">Red</span> is a color representing computer in the game.<br>
+<br>Green is a color representing player in the game.
+<br>Red is a color representing computer in the game.<br>
 <br>Markers, score and gameplay messages are coloured depending on player's or computer's action.
 This contrasts well, green and red are strong colours, so user will easily recognise which actions were taken. <br>
-<br>Text colour is <span style="color:#422800">very dark orange, brown tone </span>, the inspiration came from Start/Reset buttons styling found in [getcsssan.com](https://getcssscan.com/css-buttons-examples). It was tested and noticed that this styling contrast well with all gameplay elements. <br>
+<br>Text colour is very dark orange, brown tone, the inspiration came from Start/Reset buttons styling found in [getcsssan.com](https://getcssscan.com/css-buttons-examples). It was tested and noticed that this styling contrast well with all gameplay elements. <br>
 ![Text Colour](assets/images/readme/text-colour.png) <br>
-<br>Start/Reset buttons have background colour of <span style="color:#fbece0">light grayish orange</span>. It adds a pinch of colorfulness to the gameplay area. <br>
+<br>Start/Reset buttons have background colour of light grayish orange. It adds a pinch of colorfulness to the gameplay area. <br>
 ![Buttons Background Colour](assets/images/readme/buttons-background.png) <br>
 
 # Features
@@ -89,7 +89,7 @@ The idea behind Tic Tac Toe represented in this project is to be of simple const
 ## Gameplay
 - When player clicks **START** button markers 'X' and 'O' are randomly distributed to Player and Computer.
 - First move is randomly drawn between Player and Computer - like "coin flip".
-- Player's marker is always <span style="color:green">green</span> and computer is always <span style="color:red">red</span>.
+- Player's marker is always green and computer is always red.
 - To **win a game**, Player (or Computer) must place his **mark 3 fields** next to each other vertically, horizontally or diagonally.<br>
   ![Tic Tac Toe Wins](assets/images/readme/tic-tac-toe-wins.png)<br>
 - Player and Computer can mark only once per turn.
@@ -154,7 +154,7 @@ The idea behind Tic Tac Toe represented in this project is to be of simple const
 ### Score Section
 - Location: bottom of gameplay area, the last element in the column.
 - Represents Player's and Computer's wins.
-- Player number is <span style="color:green">green</span> and Computer number is <span style="color:red">red</span> - same as markers colour.
+- Player number is green and Computer number is red - same as markers colour.
 
 ![Score Section](assets/images/readme/score-area.png)
 
