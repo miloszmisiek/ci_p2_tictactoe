@@ -2,7 +2,7 @@
 
 Hello there!
 
-Welcome to web browser based **Tic Tac Toe** game!  It is designed to entertain users taking a break from their duties. The game allows to play against computer with very basic algorithm of randomly selected fields. It is a single page game with use of HTML and CSS for basic site structure and styling, with JavaScript handling the DOM and the gameplay itself. The idea behind developing this game came from desire to challenge coding skills in vanilla JavaScript as part of web development process.
+Welcome to web browser based **Tic Tac Toe** game!  It is designed to entertain users taking a break from their duties. The game allows to play against computer with very basic algorithm of randomly selected fields. It is a single page game with use of HTML and CSS for basic site structure and styling and with JavaScript handling the DOM and the gameplay itself. The idea behind developing this game came from desire to challenge coding skills in vanilla JavaScript as part of web development process.
 
 You can start the game [*here*](https://miloszmisiek.github.io/ci_p2_tictactoe/).
 
