@@ -618,7 +618,7 @@ hr {
     }
 }
 
-/* Modern Smartphones (Medium Screens */
+/* Modern Smartphones (Medium Screens) */
 @media screen and (max-width: 430px) and (min-height: 801px) {
 
     #heading-wrapper {
@@ -630,7 +630,7 @@ hr {
     }
 }
 
-/* Modern Smartphones (Long Screens */
+/* Modern Smartphones (Long Screens) */
 @media screen and (max-width: 430px) and (max-height: 800px) {
 
     .game-wrapper {
@@ -650,8 +650,8 @@ hr {
     }
 }
 
-/* iPhone 5 */
-@media screen and (min-width: 305px) and (max-width: 365px) {
+/* iPhone 5 and similiar size phones */
+@media screen and (min-width: 305px) and (max-width: 365px) and (max-height: 645px) {
     .game-wrapper{
         max-height: 95%;
     }
