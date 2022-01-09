@@ -1,8 +1,8 @@
 <h1 align="center">TIC TAC TOE</h1>
 
-Hello Stranger,
+Hello there!
 
-This web browser based **Tic Tac Toe** game is a simple solution for users who want to entertain themselves a bit while taking a break from work. The game is designed to play against computer with very basic algorithm of randomly selected fields. It is a single page web browser game with use of HTML and CSS for basic site structure and styling with JavaScript handling the DOM and the gameplay itself.
+Welcome to web browser based **Tic Tac Toe** game!  It is designed to entertain users taking a break from their duties. The game allows to play against computer with very basic algorithm of randomly selected fields. It is a single page game with use of HTML and CSS for basic site structure and styling, with JavaScript handling the DOM and the gameplay itself. The idea behind developing this game came from desire to challenge coding skills in vanilla JavaScript as part of web development process.
 
 You can start the game [*here*](https://miloszmisiek.github.io/ci_p2_tictactoe/).
 
@@ -54,7 +54,7 @@ Enjoy your journey!
 - As a user, I want to have a fair game.
 - As a user, I want to play mobile if I must travel.
 ## Wireframes
-[Balsamiq](https://balsamiq.com/) was used to create wireframes as a part of project planning. They were used to discuss the concept of the website with a designated Code Institute mentor. The final project differs in some places from the original concept presented below to improve UX or responsiveness of the site.
+[Balsamiq](https://balsamiq.com/) was used to create wireframes as part of project planning. They were used to discuss the concept of the website with a designated Code Institute mentor. The final project differs in some places from the original concept presented below to improve UX or responsiveness of the site.
 
 ### Landing Page
 ![Landing Page](/assets/images/readme/home.webp)
@@ -67,28 +67,28 @@ Enjoy your journey!
 ![Smartphone View](/assets/images/readme/smartphone.webp)
 
 ## Site Structure
-[Tic Tac Toe](https://miloszmisiek.github.io/ci_p2_tictactoe/) is a single page web browser game with buttons and gameboard area created to interact with a player. Instruction window is available through help-button represented with question mark in the circle. Next to help-button there are volume ON/OFF button and timer. To control gameplay there are buttons below the gameboard and the very last part is player/computer score counter.
+[Tic Tac Toe](https://miloszmisiek.github.io/ci_p2_tictactoe/) is a single page web browser game with buttons and gameboard area created to interact with a player. Instruction window is available through help-button represented with question mark in the circle. Next to help-button there are volume ON/OFF button and timer.  Below the gameboard there are START and RESET buttons for gameplay control and player/computer score counter.
 
 ### Fonts
 Two styles of fonts are used for the project: 'Cabin Sketch' for heading (game title) and 'Patrick Hand' for body text elements. The choice was made to represent best the handwriting effect. All fonts are backed-up with sans-serif.
 
 ### Colour
-The body background photo was selected to imitate wooden table. Gameplay area background photo represents white notepad. Together they contrast well and gives user the feeling of playing a game on piece of paper laying on the table.<br>
+The body background photo was selected to imitate wooden table. Gameplay area is represented by white notepad. The intention was to give user an experience of the classic Tic Tac Toe game played on a table with a pen and paper.<br>
 <br><span style="color:green">Green</span> is a color representing player in the game.
 <br><span style="color:red">Red</span> is a color representing computer in the game.<br>
 <br>Markers, score and gameplay messages are coloured depending on player's or computer's action.
-This contrasts well, green and red are strong colours, so user will easily recognize which actions were taken. <br>
-<br>Text colour is <span style="color:#422800">very dark orange, brown tone </span>, the inspiration came from Start/Reset buttons styling found in [getcsssan.com](https://getcssscan.com/css-buttons-examples). It was noticed to contrast well with all gameplay elements. <br>
+This contrasts well, green and red are strong colours, so user will easily recognise which actions were taken. <br>
+<br>Text colour is <span style="color:#422800">very dark orange, brown tone </span>, the inspiration came from Start/Reset buttons styling found in [getcsssan.com](https://getcssscan.com/css-buttons-examples). It was tested and noticed that this styling contrast well with all gameplay elements. <br>
 ![Text Colour](assets/images/readme/text-colour.png) <br>
 <br>Start/Reset buttons have background colour of <span style="color:#fbece0">light grayish orange</span>. It adds a pinch of colorfulness to the gameplay area. <br>
 ![Buttons Background Colour](assets/images/readme/buttons-background.png) <br>
 
 # Features
-The idea behind Tic Tac Toe represented in this project is to be of simple construction and intuitive to play. Gameboard is centered vertically and horizontally, for mobile devices it occupies almost all screens.
+The idea behind Tic Tac Toe represented in this project is to be of simple construction and intuitive to play. THe gameboard is centered vertically and horizontally, it is responsive and for mobile devices it occupies almost whole screen.
 
 ## Gameplay
-- When player clicks **START** button markers 'X' and 'O" are randomly distributed to Player and Computer.
-- Who has first move is randomly drawn - like "coin flip".
+- When player clicks **START** button markers 'X' and 'O' are randomly distributed to Player and Computer.
+- First move is randomly drawn between Player and Computer - like "coin flip".
 - Player's marker is always <span style="color:green">green</span> and computer is always <span style="color:red">red</span>.
 - To **win a game**, Player (or Computer) must place his **mark 3 fields** next to each other vertically, horizontally or diagonally.<br>
   ![Tic Tac Toe Wins](assets/images/readme/tic-tac-toe-wins.png)<br>
@@ -96,6 +96,8 @@ The idea behind Tic Tac Toe represented in this project is to be of simple const
 - Player has **time limit** for his move equals to **15 seconds**.
 - Timer starts when Player press **START/RESTART** button and is reset after every turn.
 - After every win respective score counter is updated for Player or Computer.
+- To play again Player can press **RESTART** button.
+- If Player decides to reset the game, he can press **RESET**. This will reset the counter additionally.
 
 ## Game Arena
 ### Game Title
@@ -107,7 +109,7 @@ The idea behind Tic Tac Toe represented in this project is to be of simple const
 ### Game Controls
 - Location: under Game Title.
 - Elements:
-  - Timer - counts down from 15sec to zero.
+  - Timer - counts down from 15sec to zero. It gives 
   - Volume Button - mutes/plays game's sound effects(only during gameplay). Icon changes depending on volume preference.
   - Help Button - gives access to game instructions (only if game is stopped).
 - Buttons when hovered change the colour to orange to help user identify interactive elements.
@@ -115,7 +117,7 @@ The idea behind Tic Tac Toe represented in this project is to be of simple const
 ![Game Controls](assets/images/readme/game-controls.png)
 
 ### Player Information/Gameplay Messages
-- Location: above and below gameboard.
+- Location: above and below Gameboard.
 - Top area gives player information which marker is selected to player and to computer.
 - Bottom area gives player information regarding who moves first, win/lose/tie condition and when time to make a move has elapsed.
 
@@ -231,7 +233,7 @@ In GitHub you have option to create a local copy (clone) of your repository on y
 
 # Credits
 ## Content
-- The main idea of how to build the game come from *James Q Quick* [YouTube Tutorial](https://www.youtube.com/watch?v=E621N5GBKv8&t=1341s).
+- The main idea of how to build the game came from *James Q Quick* [YouTube Tutorial](https://www.youtube.com/watch?v=E621N5GBKv8&t=1341s).
 - Modal pop-up window used for game's instructions section copied from *Web Dev Simplified* [YouTube Tutorial](https://www.youtube.com/watch?v=MBaw_6cPmAw).
 - Part of code used for game's Score Area come from [Code Institute](https://codeinstitute.net/) 'Love Math’s' Essential Project.
 - README file is based on game’s owner previous project [ECOCITY](https://github.com/miloszmisiek/ci_p1_ecocity) and some concepts are inspired by fellow Code Institute student [Mycrosys](https://github.com/Mycrosys/marblesgame) project.
