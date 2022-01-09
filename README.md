@@ -110,8 +110,8 @@ The idea behind Tic Tac Toe represented in this project is to be of simple const
 - Location: under Game Title.
 - Elements:
   - Timer - counts down from 15sec to zero. It gives 
-  - Volume Button - mutes/plays game's sound effects(only during gameplay). Icon changes depending on volume preference.
-  - Help Button - gives access to game instructions (only if game is stopped).
+  - Volume Button - mutes/plays game's sound effects(only during gameplay). Icon changes depending on volume preference. If players hits the button while game is stopped, alert message informs user of invalid use.
+  - Help Button - gives access to game instructions (only if game is stopped). If players hits the button while game is on, alert message informs user of invalid use.
 - Buttons when hovered change the colour to orange to help user identify interactive elements.
 
 ![Game Controls](assets/images/readme/game-controls.png)
