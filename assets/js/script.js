@@ -55,6 +55,8 @@ document.getElementById("volume").addEventListener("click", (e) => {
         } else {
             unMutePage();
         }
+    } else {
+        alert("You have to start the game to mute/unmute sound effects.");
     }
 });
 
@@ -64,6 +66,8 @@ document.querySelectorAll('[data-modal-target]').forEach(button => {
         if (gameOn === false) {
             const modal = document.querySelector(button.dataset.modalTarget);
             openModal(modal);
+        } else {
+            alert("Game is ON! You can access the instruction only if the game is stopped.");
         }
     });
 });
